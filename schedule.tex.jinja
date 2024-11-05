@@ -1,0 +1,182 @@
+\documentclass[a4paper,parskip]{scrartcl}
+
+\usepackage[margin=1.2cm
+%,showframe% <- only to show the page layout
+]{geometry}
+
+\usepackage{fontspec}
+%\setmainfont{Montserrat}
+
+\newfontfamily\headingfont[Path=./fonts/]{Aldrich-Regular.ttf}
+\newfontfamily\subheadfont[Path=./fonts/]{Homenaje-Regular.ttf}
+\newfontfamily\montaltfont[Path=./fonts/]{MontserratAlternates-Regular.ttf}
+\newfontfamily\boldfont[Path=./fonts/]{WorkSans-Bold.ttf}
+\newfontfamily\mediumfont[Path=./fonts/]{WorkSans-Medium.ttf}
+\setmainfont[Path=./fonts/]{WorkSans-Regular.ttf}
+
+\newfontfamily\timeregularfont[Path=./fonts/]{CooperHewitt-Book.otf}
+\newfontfamily\timelightfont[Path=./fonts/]{CooperHewitt-Light.otf}
+
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{adjustbox}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+
+\AddToHook{shipout/background}{%
+    \put (0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{exoplanetsails_compressed.jpg}}%
+}
+
+\begin{document}
+
+\begin{centering}
+    \color{white}
+    \headingfont%
+    \Huge First European Interstellar Workshop
+
+    %
+\end{centering}
+
+\begin{centering}
+    \color{white}
+    \subheadfont%
+    \LARGE 2\textsuperscript{nd} - 5\textsuperscript{th} December 2024, ECCL, Luxembourg
+
+    %
+\end{centering}
+
+%\begin{adjustbox}{center}
+%\colorbox{white}{\begin{minipage}[c][2cm][c]{\paperwidth}
+%TUESDAY
+%\end{minipage}}
+\begin{tcolorbox}[width=\paperwidth,center,boxrule=0pt,arc=0pt,auto outer arc,opacityfill=0.3,colframe=black,colback=black]
+    \color{white}
+    {\timeregularfont\Huge TUESDAY}
+    \normalsize \raisebox{1ex}{Wednesday 3rd}
+%\lipsum[1]
+\end{tcolorbox}
+
+%\end{adjustbox}
+
+\begin{tcolorbox}[width=\linewidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,breakable]
+    \begin{comment}
+    \begin{tikzpicture}
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        \node[anchor=west,text width=11cm,align=left,minimum height=1.3cm] (T) at (1.2,0) {\mediumfont%
+        Welcome by the organizers, Conference Agenda review%
+        };
+
+        \fill[rounded corners=1mm,red] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+
+        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
+        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
+        % Draw rounded rectangle next to that
+        
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        \node[anchor=west,text width=11cm,align=left,minimum height=1.3cm,style={inner sep=2mm}] (T) at (1.2,0) {{\mediumfont%
+        Keynote Lecture 1: Pete Worden (Breakthrough Initiatives) — TBD}\\[1ex]
+        {\color{gray}\footnotesize Pete Worden (Breakthrough Initiatives)}
+        };
+
+        \fill[rounded corners=1mm,red] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+
+        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
+        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
+        % Draw rounded rectangle next to that
+        
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        \fill[rounded corners=1mm,gray!50!white] (1,-1) rectangle (12.2,1) node[pos=.5,gray!50!black] {Coffee Break};
+
+        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
+        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
+        % Draw rounded rectangle next to that
+        
+    \end{tikzpicture}
+    \end{comment}
+
+    {{% for event in days[1]['rooms']['Banquet Room'] %}}
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        {{% if event.break %}}
+
+            \fill[rounded corners=1mm,gray!50!white]
+            (1,-1) rectangle (16.2,1) node[pos=.5,gray!80!black] {\mediumfont {{{ event.title }}}};
+
+        {{% elif event.subevents %}}
+
+            \definecolor{thistrack}{HTML}{{{ '{' + event.color[1:] + '}' }}}
+
+            \node[style={inner sep=0, outer sep=0}] (A0) at (1.4,0) {};
+
+            {{% for subevent in event.subevents %}}
+                \node[anchor=north west,text width=15cm,align=left,minimum height=1.3cm]
+                (A{{{loop.index}}}) at (A{{{loop.index - 1}}}.south west)
+                {\mediumfont%
+                {{{ subevent.title }}}%
+                {{% if subevent.persons and subevent.persons|length > 0 %}}%
+                    \\[0ex]%
+                    {\color{gray}\footnotesize%
+                        {{% for person in subevent.persons %}}%
+                            {{{ person.public_name | replace(" ", "~") }}}%
+                            {{% if not loop.last %}}, {{% endif %}}%
+                        {{% endfor %}}%
+                    }%
+                {{% endif %}}%
+                };
+            {{% endfor %}}
+
+            % Draw rounded rectangle next to that
+            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A{{{ event.subevents | length }}}.south west -| 1.2,1) {};
+
+            % Track title
+            \node[anchor=south west] at (A0.north west -| 0.8,0) {\large\boldfont\color{thistrack}%
+                {{{ event.title | replace('&', '\&' )}}}%
+            };
+
+        {{% else %}}
+            \definecolor{thistrack}{HTML}{{{ '{' + event.color[1:] + '}' }}}
+
+            \node[anchor=west,text width=15cm,align=left,minimum height=1.3cm] (T) at (1.2,0) {\mediumfont%
+            {{{ event.title }}}%
+            {{% if event.persons and event.persons|length > 0 and event.track != "Keynote" %}}%
+                \\[1ex]%
+                {\color{gray}\footnotesize%
+                    {{% for person in event.persons %}}%
+                        {{{ person.public_name | replace(" ", "~") }}}%
+                        {{% if not loop.last %}}, {{% endif %}}%
+                    {{% endfor %}}%
+                }%
+            {{% endif %}}%
+            };
+
+            % Draw rounded rectangle next to that
+            \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+
+        {{% endif %}}
+
+        \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large {{{ event.start}}} };
+        \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ {{{ event.end }}} };        
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm}
+    {{% endfor %}}
+
+\end{tcolorbox}
+
+
+
+\end{document}
