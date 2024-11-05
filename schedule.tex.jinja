@@ -46,65 +46,24 @@
     %
 \end{centering}
 
-%\begin{adjustbox}{center}
-%\colorbox{white}{\begin{minipage}[c][2cm][c]{\paperwidth}
-%TUESDAY
-%\end{minipage}}
+
+{{% for day in days %}}
 \begin{tcolorbox}[width=\paperwidth,center,boxrule=0pt,arc=0pt,auto outer arc,opacityfill=0.3,colframe=black,colback=black]
     \color{white}
-    {\timeregularfont\Huge TUESDAY}
-    \normalsize \raisebox{1ex}{Wednesday 3rd}
-%\lipsum[1]
+    {\timeregularfont\Huge {{{ day.date_datetime.strftime("%A") | upper }}}}
+    \normalsize \raisebox{1ex}{%
+    {{{ day.date_datetime.strftime("%B") }}} %
+    {{{ day.date_datetime.day }}}%
+    {{{ 'st' if day.date_datetime.day == 1 else '' }}}%
+    {{{ 'nd' if day.date_datetime.day == 2 else '' }}}%
+    {{{ 'rd' if day.date_datetime.day == 3 else '' }}}%
+    {{{ 'th' if day.date_datetime.day > 3 else '' }}}%
+    }
 \end{tcolorbox}
 
-%\end{adjustbox}
 
 \begin{tcolorbox}[width=\linewidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,breakable]
-    \begin{comment}
-    \begin{tikzpicture}
-        \node at (-1,0) {}; % Alignment node for bounding box
-
-        \node[anchor=west,text width=11cm,align=left,minimum height=1.3cm] (T) at (1.2,0) {\mediumfont%
-        Welcome by the organizers, Conference Agenda review%
-        };
-
-        \fill[rounded corners=1mm,red] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
-
-        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
-        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
-        % Draw rounded rectangle next to that
-        
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-        \node at (-1,0) {}; % Alignment node for bounding box
-
-        \node[anchor=west,text width=11cm,align=left,minimum height=1.3cm,style={inner sep=2mm}] (T) at (1.2,0) {{\mediumfont%
-        Keynote Lecture 1: Pete Worden (Breakthrough Initiatives) — TBD}\\[1ex]
-        {\color{gray}\footnotesize Pete Worden (Breakthrough Initiatives)}
-        };
-
-        \fill[rounded corners=1mm,red] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
-
-        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
-        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
-        % Draw rounded rectangle next to that
-        
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-        \node at (-1,0) {}; % Alignment node for bounding box
-
-        \fill[rounded corners=1mm,gray!50!white] (1,-1) rectangle (12.2,1) node[pos=.5,gray!50!black] {Coffee Break};
-
-        \node[anchor=south] (S) at (0,0) {\timeregularfont\Large 09:00};
-        \node[anchor=north] (E) at (0,0) {\timelightfont\textendash~10:00};
-        % Draw rounded rectangle next to that
-        
-    \end{tikzpicture}
-    \end{comment}
-
-    {{% for event in days[1]['rooms']['Banquet Room'] %}}
+    {{% for event in day['rooms']['Banquet Room'] %}}
     \begin{tikzpicture}
 
         \node at (-1,0) {}; % Alignment node for bounding box
@@ -113,6 +72,9 @@
 
             \fill[rounded corners=1mm,gray!50!white]
             (1,-1) rectangle (16.2,1) node[pos=.5,gray!80!black] {\mediumfont {{{ event.title }}}};
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large {{{ event.start}}} };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ {{{ event.end }}} };     
 
         {{% elif event.subevents %}}
 
@@ -135,6 +97,17 @@
                     }%
                 {{% endif %}}%
                 };
+
+
+                {{% if loop.first %}}
+                \node[] (S) at (A{{{loop.index}}} -| 0,0) {\timeregularfont\Large {{{ subevent.start}}} };
+                {{% elif loop.last and False %}} 
+                %\node[anchor=south] (S) at (A{{{loop.index}}} -| 0,0) {\timelightfont {{{ subevent.start}}} };
+                %\node[anchor=north] (E) at (A{{{loop.index}}} -| 0,0) {\timelightfont\textendash~ {{{ subevent.end }}} };  
+                {{% else %}}
+                \node[] (S) at (A{{{loop.index}}} -| 0,0) {\timelightfont {{{ subevent.start}}} };
+                {{% endif %}}
+
             {{% endfor %}}
 
             % Draw rounded rectangle next to that
@@ -164,10 +137,12 @@
             % Draw rounded rectangle next to that
             \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
 
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large {{{ event.start}}} };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ {{{ event.end }}} };     
+
         {{% endif %}}
 
-        \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large {{{ event.start}}} };
-        \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ {{{ event.end }}} };        
+   
 
         % bottom padding
         \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
@@ -176,6 +151,8 @@
     {{% endfor %}}
 
 \end{tcolorbox}
+
+{{% endfor %}}
 
 
 
