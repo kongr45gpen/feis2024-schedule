@@ -8,6 +8,8 @@ from datetime import datetime, time, date, timedelta
 import dateutil.parser
 import pytz
 import copy
+import yaml
+import csv
 
 FORMAT = "%(message)s"
 logging.basicConfig(
@@ -35,20 +37,21 @@ with open('schedule.json', 'w') as f:
     f.write(data_aux.text)
 json_aux = data_aux.json()
 
-env = Environment(
-    loader=FileSystemLoader("."),
-    autoescape=select_autoescape(['tex']),
-    block_start_string='{{%',
-    block_end_string='%}}',
-    variable_start_string='{{{',
-    variable_end_string='}}}',
-    comment_start_string='{{#',
-    comment_end_string='#}}',
-)
+
+# Answers from authors from CSV file
+speaker_answers = {}
+with open('feis2024-speaker-questions.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        if not row['code'] in speaker_answers:
+            speaker_answers[row['code']] = {}
+            speaker_answers[row['code']]['name'] = row['name']
+        speaker_answers[row['code']][row['question']] = row['answer']
 
 # Parse JSON
-timezone = pytz.timezone(json['schedule']['conference']['time_zone_name'])
 days = json['schedule']['conference']['days']
+timezone = pytz.timezone(json['schedule']['conference']['time_zone_name'])
+
 for day in days:
     day['date_datetime'] = datetime.strptime(day['date'], "%Y-%m-%d")
 
@@ -76,6 +79,14 @@ for day in days:
             else:
                 log.warning(f"Track {event['track']} not found for talk {event['title']}.")
                 event['color'] = '#7f2ca0'
+
+            event['code'] = event['url'].split('/')[-2]
+
+            for speaker in event['persons']:
+                try:
+                    speaker['affiliation'] = speaker_answers[speaker['code']]['Affiliation']
+                except KeyError as e:
+                    log.warning(f"Speaker {speaker['public_name']} has unknown affiliation")
 
 # Parse aux JSON for breaks
 for talk in json_aux['talks']:
@@ -111,10 +122,45 @@ for talk in json_aux['talks']:
                             "end": end_short,
                             "start_datetime": start,
                             "end_datetime": end,
+                            "code": ""
                         }
                         room.insert(room.index(event), break_event)
 
                         break
+
+# Apply overrides
+try:
+    with open('overrides.yml') as f:
+        overrides = yaml.safe_load(f)
+except Exception as e:
+    log.warning(f"Failed to read overrides: {e}")
+
+
+for day in days:
+    for room in day['rooms'].values():
+        for event in room:
+            if event['code'] in overrides['talks']:
+                override = overrides['talks'][event['code']]
+                for key in override:
+                    event[key] = override[key]
+                
+                if 'persons_reorder' in override:
+                    def get_person_by_code(persons, code):
+                        result = next(filter(lambda person: person['code'] == code, persons), None)
+                        if not result:
+                            log.fatal(f"For the talk \"{event['title']}\" ({ event['code'] }), the person with code \"{code}\" was not found in the list of persons.")
+                        return result
+
+                    original_order = [ person['code'] for person in event['persons'] ]
+                    event['persons'] = [ get_person_by_code(event['persons'], code) for code in override['persons_reorder'] ]
+                    new_order = [ person['code'] for person in event['persons'] ]
+
+                    logging.debug(f"Reordered persons for {event['title']} from {original_order} to {new_order}")
+                    
+            if 'persons' in event:
+                for person in event['persons']:
+                    if 'affiliation' in person and person['affiliation'] in overrides['affiliations']:
+                        person['affiliation'] = overrides['affiliations'][person['affiliation']]
 
 # Combine tracks
 for day in days:
@@ -151,8 +197,26 @@ for day in days:
             del room[key]
 
 
+# days = [days[1]]
 
 
+env = Environment(
+    loader=FileSystemLoader("."),
+    autoescape=select_autoescape(['tex']),
+    block_start_string='{{%',
+    block_end_string='%}}',
+    variable_start_string='{{{',
+    variable_end_string='}}}',
+    comment_start_string='{{#',
+    comment_end_string='#}}',
+)
+
+# Maybe define a few Jinja2 filters
+def abbreviate_name(name):
+    """Abbreviates all parts of a full name except the last. E.g. John Marc S. Doe becomes J. M. S. Doe"""
+    parts = name.split()
+    return " ".join([f"{part[0]}." if i < len(parts) - 1 else part for i, part in enumerate(parts)])
+env.filters['abbreviate_name'] = abbreviate_name
 
 template = env.get_template('schedule.tex.jinja')
 

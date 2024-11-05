@@ -1,17 +1,18 @@
-\documentclass[a4paper,parskip]{scrartcl}
+\documentclass[a4paper,parskip,10pt]{scrartcl}
 
-\usepackage[margin=1.2cm
-%,showframe% <- only to show the page layout
+\usepackage[margin=1.2cm,
+%showframe% <- only to show the page layout
+paperheight=350mm,
 ]{geometry}
 
 \usepackage{fontspec}
 %\setmainfont{Montserrat}
 
-\newfontfamily\headingfont[Path=./fonts/]{Aldrich-Regular.ttf}
-\newfontfamily\subheadfont[Path=./fonts/]{Homenaje-Regular.ttf}
+\newfontfamily\headingfont[Path=./fonts/]{Montserrat-Medium.ttf}
+\newfontfamily\subheadfont[Path=./fonts/]{MontserratAlternates-Regular.ttf}
 \newfontfamily\montaltfont[Path=./fonts/]{MontserratAlternates-Regular.ttf}
 \newfontfamily\boldfont[Path=./fonts/]{WorkSans-Bold.ttf}
-\newfontfamily\mediumfont[Path=./fonts/]{WorkSans-Medium.ttf}
+\newfontfamily\mediumfont[Path=./fonts/,BoldFont=WorkSans-Bold.ttf]{WorkSans-Medium.ttf}
 \setmainfont[Path=./fonts/]{WorkSans-Regular.ttf}
 
 \newfontfamily\timeregularfont[Path=./fonts/]{CooperHewitt-Book.otf}
@@ -23,10 +24,22 @@
 \usepackage{adjustbox}
 \usepackage[most]{tcolorbox}
 \usepackage{tikz}
+\usepackage{hyperref}
 
 \AddToHook{shipout/background}{%
     \put (0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{exoplanetsails_compressed.jpg}}%
 }
+
+\definecolor{conference}{HTML}{{{ '{' + json.schedule.conference.colors.primary[1:] + '}' }}}
+
+%\AtBeginDocument{
+\urlstyle{same}
+\hypersetup{%
+    colorlinks=false,% hyperlinks will be black
+    urlbordercolor=conference,% hyperlink borders will be red
+    pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+%}
 
 \begin{document}
 
@@ -46,9 +59,23 @@
     %
 \end{centering}
 
-
 {{% for day in days %}}
-\begin{tcolorbox}[width=\paperwidth,center,boxrule=0pt,arc=0pt,auto outer arc,opacityfill=0.3,colframe=black,colback=black]
+
+{{% if not loop.first %}}
+\newpage
+{{% endif %}}
+
+\begin{tcolorbox}[
+    width=\paperwidth,
+    center,
+    boxrule=0pt,
+    arc=0pt,
+    auto outer arc,
+    opacityfill=0.3,
+    colframe=black,
+    colback=black,
+    left=1.2cm,
+    ]
     \color{white}
     {\timeregularfont\Huge {{{ day.date_datetime.strftime("%A") | upper }}}}
     \normalsize \raisebox{1ex}{%
@@ -61,8 +88,27 @@
     }
 \end{tcolorbox}
 
+{{% macro speakers(speaker_list) -%}}
+    {{% if speaker_list and speaker_list|length > 0 %}}%
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        {{% for person in speaker_list %}}%
+            {{% if not loop.first -%}}
+                {{{ person.public_name | abbreviate_name | replace(". ", ".~") }}}%
+            {{%- else -%}}
+                {{{ person.public_name | replace(". ", ".~") }}}%
+            {{%- endif -%}}
+            {{% if person.affiliation and (loop.last or person.affiliation != loop.nextitem.affiliation) %}}%
+                \ ({{{ person.affiliation | replace(". ", ".~") }}})%
+            {{% endif %}}%
+            {{% if not loop.last %}},\@ {{% endif %}}%
+        {{% endfor %}}%
+    }%
+    {{% endif %}}%
+{{%- endmacro %}}
 
-\begin{tcolorbox}[width=\linewidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,breakable]
+
+\begin{tcolorbox}[width=\linewidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,breakable,height fixed for=all]
     {{% for event in day['rooms']['Banquet Room'] %}}
     \begin{tikzpicture}
 
@@ -71,7 +117,7 @@
         {{% if event.break %}}
 
             \fill[rounded corners=1mm,gray!50!white]
-            (1,-1) rectangle (16.2,1) node[pos=.5,gray!80!black] {\mediumfont {{{ event.title }}}};
+            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont {{{ event.title }}}};
 
             \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large {{{ event.start}}} };
             \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ {{{ event.end }}} };     
@@ -83,29 +129,19 @@
             \node[style={inner sep=0, outer sep=0}] (A0) at (1.4,0) {};
 
             {{% for subevent in event.subevents %}}
-                \node[anchor=north west,text width=15cm,align=left,minimum height=1.3cm]
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A{{{loop.index}}}) at (A{{{loop.index - 1}}}.south west)
                 {\mediumfont%
                 {{{ subevent.title }}}%
-                {{% if subevent.persons and subevent.persons|length > 0 %}}%
-                    \\[0ex]%
-                    {\color{gray}\footnotesize%
-                        {{% for person in subevent.persons %}}%
-                            {{{ person.public_name | replace(" ", "~") }}}%
-                            {{% if not loop.last %}}, {{% endif %}}%
-                        {{% endfor %}}%
-                    }%
-                {{% endif %}}%
+                {{{ speakers(subevent.persons) }}}%
+                %\\\texttt{ {{{ subevent.code }}} }
                 };
 
 
                 {{% if loop.first %}}
                 \node[] (S) at (A{{{loop.index}}} -| 0,0) {\timeregularfont\Large {{{ subevent.start}}} };
-                {{% elif loop.last and False %}} 
-                %\node[anchor=south] (S) at (A{{{loop.index}}} -| 0,0) {\timelightfont {{{ subevent.start}}} };
-                %\node[anchor=north] (E) at (A{{{loop.index}}} -| 0,0) {\timelightfont\textendash~ {{{ subevent.end }}} };  
                 {{% else %}}
-                \node[] (S) at (A{{{loop.index}}} -| 0,0) {\timelightfont {{{ subevent.start}}} };
+                \node[] (S) at (A{{{loop.index}}} -| 0,0) {\timelightfont\large {{{ subevent.start}}} };
                 {{% endif %}}
 
             {{% endfor %}}
@@ -121,16 +157,22 @@
         {{% else %}}
             \definecolor{thistrack}{HTML}{{{ '{' + event.color[1:] + '}' }}}
 
-            \node[anchor=west,text width=15cm,align=left,minimum height=1.3cm] (T) at (1.2,0) {\mediumfont%
+            \node[anchor=west,text width=14cm,align=left,minimum height=1.3cm] (T) at (1.3,0) {\mediumfont%
             {{{ event.title }}}%
-            {{% if event.persons and event.persons|length > 0 and event.track != "Keynote" %}}%
-                \\[1ex]%
-                {\color{gray}\footnotesize%
-                    {{% for person in event.persons %}}%
-                        {{{ person.public_name | replace(" ", "~") }}}%
-                        {{% if not loop.last %}}, {{% endif %}}%
-                    {{% endfor %}}%
+            %\ \texttt{{{ '{' + event.code + '}' }}}%
+            {{% if event.abstract %}}%
+                %~\\[1ex]%
+                {%
+                \par%
+                \setlength{\parskip}{1ex}
+                \color{thistrack!20!black}%
+                \small%
+                \fontfamily{\familydefault}\selectfont%
+                {{{ event.abstract }}}%
                 }%
+            {{% endif %}}%
+            {{% if event.track != "Keynote" %}}%
+            {{{ speakers(event.persons) }}}%
             {{% endif %}}%
             };
 
@@ -147,7 +189,9 @@
         % bottom padding
         \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
     \end{tikzpicture}
-    %\vspace{0mm}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
     {{% endfor %}}
 
 \end{tcolorbox}
