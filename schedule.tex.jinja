@@ -3,6 +3,7 @@
 \usepackage[margin=1.2cm,
 %showframe% <- only to show the page layout
 paperheight=350mm,
+footskip=0.5cm,
 ]{geometry}
 
 \usepackage{fontspec}
@@ -13,7 +14,7 @@ paperheight=350mm,
 \newfontfamily\montaltfont[Path=./fonts/]{MontserratAlternates-Regular.ttf}
 \newfontfamily\boldfont[Path=./fonts/]{WorkSans-Bold.ttf}
 \newfontfamily\mediumfont[Path=./fonts/,BoldFont=WorkSans-Bold.ttf]{WorkSans-Medium.ttf}
-\setmainfont[Path=./fonts/]{WorkSans-Regular.ttf}
+\setmainfont[Path=./fonts/,BoldFont=WorkSans-Bold.ttf]{WorkSans-Regular.ttf}
 
 \newfontfamily\timeregularfont[Path=./fonts/]{CooperHewitt-Book.otf}
 \newfontfamily\timelightfont[Path=./fonts/]{CooperHewitt-Light.otf}
@@ -25,6 +26,30 @@ paperheight=350mm,
 \usepackage[most]{tcolorbox}
 \usepackage{tikz}
 \usepackage{hyperref}
+\usepackage{qrcode}
+\usepackage{shadowtext}
+\usepackage{fontawesome}
+\usepackage[style=iso]{datetime2}
+\usepackage{scrlayer-scrpage}
+\usepackage{lastpage}
+\usepackage{xcolor-material}
+%\usepackage{scrpage2}
+%\usepackage{fancyhdr}
+
+%\rfoot{\color{white}\footnotesize \thepage/\pageref{LastPage}}
+%\pagestyle{scrheadings}
+
+%\lohead{\color{white} John Doe}
+%\rohead{\color{white} Page style with KOMAScript}
+%\lofoot[Smart Alex Publishing]
+%{\color{white} Smart Alec Publishing}
+%\rehead{\color{white} John Doe}
+%\lohead{\color{white} Page style with KOMAScript}
+%\refoot[Smart Alex Publishing]
+%{\color{white} Smart Alec Publishing}
+\cfoot{}
+\ofoot{\color{white}\footnotesize \thepage/\pageref*{LastPage}}
+%\pagestyle{scrheadings}
 
 \AddToHook{shipout/background}{%
     \put (0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{exoplanetsails_compressed.jpg}}%
@@ -59,6 +84,24 @@ paperheight=350mm,
     %
 \end{centering}
 
+    {
+        \begin{tikzpicture}
+            \node (0,0) {}; % Alignment node for bounding box
+
+
+            \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
+            \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
+
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/qr}};
+        \end{tikzpicture}%
+    }
+
+    \noindent%
+    \shadowcolor{black}
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version {{{json.schedule.version -}}} }%
+    \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
+    \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
+
 {{% for day in days %}}
 
 {{% if not loop.first %}}
@@ -75,16 +118,41 @@ paperheight=350mm,
     colframe=black,
     colback=black,
     left=1.2cm,
+    right=1.2cm,
     ]
     \color{white}
-    {\timeregularfont\Huge {{{ day.date_datetime.strftime("%A") | upper }}}}
-    \normalsize \raisebox{1ex}{%
+    {\timeregularfont\fontsize{25}{13.5}\selectfont {{{ day.date_datetime.strftime("%A") | upper }}}}
+    \hspace{.5em}
+    \Large \raisebox{.8ex}{%
     {{{ day.date_datetime.strftime("%B") }}} %
     {{{ day.date_datetime.day }}}%
     {{{ 'st' if day.date_datetime.day == 1 else '' }}}%
     {{{ 'nd' if day.date_datetime.day == 2 else '' }}}%
     {{{ 'rd' if day.date_datetime.day == 3 else '' }}}%
     {{{ 'th' if day.date_datetime.day > 3 else '' }}}%
+    }
+    \hfill
+    \raisebox{.8ex}{
+    \begin{tikzpicture}
+        \def\spacing{0.3}
+        \def\size{0.3}
+        %\fill[fill=conference!30!black] (0,0) rectangle ++(0.2,0.2);
+        %\fill[fill=conference!90!black] (0.4,0) rectangle ++(0.2,0.2);
+        %\fill[fill=conference!30!black] (0.8,0) rectangle ++(0.2,0.2);
+        %\fill[fill=conference!30!black] (1.2,0) rectangle ++(0.2,0.2);
+        \foreach \i in {0,1,2,3} {
+            \ifnum \i = 0
+                \def\basecolor{MaterialGreen600}
+            \else
+                \def\basecolor{conference}
+            \fi
+            \def\color{\basecolor!30!gray!50!black}
+            \ifnum \i = {{{ loop.index0 }}}
+                \def\color{\basecolor!90!white}
+            \fi
+            \fill[fill=\color] ({\i*(\spacing+\size)},0) rectangle ++(\size,\size);
+        }
+    \end{tikzpicture}
     }
 \end{tcolorbox}
 
@@ -198,6 +266,26 @@ paperheight=350mm,
 
 {{% endfor %}}
 
-
+\begin{tcolorbox}[
+    colback=white,
+    right,
+    width=5cm,
+    sharp corners,
+    size=minimal,
+    halign=center,
+    halign title=center,
+    title=\textbf{Venue},
+    toptitle=3mm,
+    bottomtitle=3mm,
+    top=2mm,
+    bottom=2mm,
+    colbacktitle=black,
+    opacitybacktitle=0.5,
+]{
+    European Convention Center Luxembourg (ECCL)\\[1mm]
+    \includegraphics[width=\linewidth]{map.pdf}
+    4 Place de l'Europe, 1499 Luxembourg
+}
+\end{tcolorbox}
 
 \end{document}
