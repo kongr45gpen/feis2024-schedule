@@ -1,0 +1,105 @@
+talks:
+  MEGK9J:
+    abstract: |
+      Seminars are 3-hour presentations on a single subject presented by individuals familiar with the topic and providing an in-depth look at that subject. Seminars are not included in the IRG Symposium costs and do not require Symposium membership to attend.
+
+      The seminar topics are: \begin{itemize}
+        \item Interstellar Generation Ships \textemdash~Designing Miniaturized Worlds (Andreas M.~Hein)
+        \item Planning for the Truly Long Long-Term (Anders Sandberg)
+        \item Interstellar Propulsion: Current Prospects and Future Possibilities (Les Johnson)
+      \end{itemize}
+
+      The seminar venue will be the University of Luxembourg.
+
+      For registration and more information, please visit: {\color{conference!50!black}\url{https://feis2024.uni.lu/seminars}}
+    persons: []
+    tagleft: SIGN UP REQUIRED
+  M98DYT:
+    title: Science Fiction Authors Night
+    abstract: |
+      The first public event of the FEIS2024 symposium will feature three prominent Science Fiction authors, and will be open to all space professionals and enthusiasts on December 2\textsuperscript{nd}.
+
+
+      \begin{minipage}[c]{0.2\linewidth}
+      \includegraphics[width=\textwidth]{media/author1.jpg}
+      \end{minipage}~
+      \begin{minipage}[c]{0.8\linewidth}
+      \textbf{Les Johnson} is a physicist, award-winning science and science fiction author, and Chief Technologist at the NASA George C.~Marshall Space Flight Center.
+      %His science fiction books include Crisis at Proxima (Baen 2024), The Ross 248 Project (Baen 2023), Saving Proxima (Baen 2021), Pluto: The Dark World (coming from Tor 2025), and more. Les's popular science books include A Traveler's Guide to the Stars (Princeton Press 2022) \textemdash~now translated into 7 languages, Graphene: The Superstrong, Superthin, and Superversatile Material That Will Revolutionize the World (2018), Solar Sails: A Novel Approach to Interplanetary Travel, and others.
+      He was a technical consultant for the movies Europa Report, Lost in Space, and Solis. NPR, CNN, Fox News, The Science Channel and The Discovery Channel have all interviewed Les about space and space exploration. Les was the featured Interstellar Explorer in the January 2013 issue of National Geographic magazine and appeared there again in March 2019.
+      \end{minipage}
+
+      \begin{minipage}[c]{0.2\linewidth}
+      \includegraphics[width=\textwidth]{media/author2.jpg}
+      \end{minipage}~
+      \begin{minipage}[c]{0.8\linewidth}
+      \textbf{Brandon Q. Morris} is a physicist and space specialist. He has long been concerned with space issues, both professionally and privately and while he wanted to become an astronaut, he had to stay on Earth for a variety of reasons. He is particularly fascinated by the “what if” and through his books he aims to share compelling hard science fiction stories that could actually happen, and someday may happen.
+      \end{minipage}
+
+      \begin{minipage}[c]{0.2\linewidth}
+      \includegraphics[width=\textwidth]{media/author3.jpg}
+      \end{minipage}~
+      \begin{minipage}[c]{0.8\linewidth}
+      With almost 2 million books sold, \textbf{Joshua T. Calvert} is at the forefront of current international science fiction. His German novel “Singularity”, published by Fischer-Tor, won the prestigious “Seraph” fantasy literature prize for best novel in 2022. The English translation of his Kindle hit “The Fossil” won second place in the 2021 American “Reader’s Favorite Awards” for best novel. His books are available in English, Spanish and German. % As a hybrid author, his novels are indie-published and published by well-known publishers.
+      He lives with his wife and son between Portugal and Greece. 
+      \end{minipage}
+    persons: []
+    tagleft: OPEN TO PUBLIC
+  3YSYC3:
+    persons_reorder: [ FHJ7JG, FLBUFG ]
+  7Z9SNY:
+    persons_reorder: [ CSC8MH, PGF8XG, URK8TK ]
+  8UNG3W:
+    persons_reorder: [ TLRURA, SBY3KJ, ARLKTZ ]
+  RQHMC7:
+    persons_reorder: [ LXVJWA, T3RTWM, TMWG7N, YG77BJ, BFEXM7, 7Q9VMD, JPJANQ ]
+  89JDYA:
+    tagright: OPEN TO PUBLIC
+affiliations:
+  Initiative for Interstellar Studies: I4IS
+  Initiative for Interstellar Studies I4IS: I4IS
+  FOTEC Forschungs- und Technologietransfer GmbH: FOTEC
+  Delft University of Technology: TU Delft
+  Institute for Futures Studies, Stockholm: Institute for Future Studies
+  Institut für Textiltechnik der RWTH Aachen University: RWTH Aachen University
+featured:
+  TSTQQY: # Pete Worden
+    title: "Keynote Lecture 1: Pete Worden (Breakthrough Initiatives) \\\\ Life in the Universe and Private Sector Space Science Initiatives"
+    description: Dr.~Worden will present Breakthrough Listen, looking for signs of extraterrestrial technology; Breakthrough Watch, looking for nearby exoplanets; Breakthrough Starshot, engineering a light-driven probe for Alpha Centauri; and other space science programs to find life beyond earth and explore the cosmos.
+    persons:
+      - biography: Dr. S.~``Pete''' Worden, (Brig Gen, USAF, Ret, PhD) is Chairman of the Breakthrough Prize Foundation and Executive Director of the foundation's ``Breakthrough Initiatives''. He holds a Bachelor of Science degree in Physics and Astronomy from the University of Michigan and a PhD in Astronomy from the University of Arizona. After several US Air Force positions and a research professorship in astronomy at the University of Arizona, Dr. Worden was Director of NASA's Ames Research Center until retiring on March 31, 2015. From 2017 to the present, Brigadier General Worden is an Advisor to the Luxembourg Space Agency and was appointed as a Knight-Commander of the Order of Merit of the Grand Duchy of Luxembourg in 2018 for his space services.
+    image: keynote1.jpg
+    righttrim: 1cm
+  3XGUSA: # Harry Atwater
+    title: "Keynote Lecture 2: Harry Atwater (California Institute of Technology \\\\  StarShot \\textemdash~from physics to spacecraft"
+    image: keynote2.jpg
+    lefttrim: 0.3cm
+    righttrim: 1cm
+    description: Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
+    persons:
+      - biography: Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.
+  89JDYA: # Sara Seager
+    description: "\\textbf{Highlight Talk:} Sara Seager, MIT, An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth? with Panel Q&A"
+    image: public2.jpg
+    lefttrim: 3.4cm
+    righttrim: 5.6cm
+  38CABN:
+    title: "Keynote Lecture 3: Paolo Villoresi (University of Padova) \\\\  Harnessing the light emission for extreme space optical communication"
+    image: keynote1.jpg
+  AT8ECC: # Martin Tajmar
+    title: "Keynote Lecture 4: Martin Tajmar (TU Dresden) \\\\  Overview of Breakthrough Propulsion at TU Dresden"
+    description: Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
+    persons:
+      - biography: Prof. Dr. Martin Tajmar studied physics, space studies and electrical engineering, graduating with a PhD from TU Wien. After research stays at NASA JPL and ESA-ESTEC, he joined the Austrian Institute of Technology where he was head of the business unit ``Space Propulsion & Advanced Concepts''. After being appointed as associate professor at KAIST, he moved to TU Dresden as full professor and head of the chair of space systems in 2012, where he later became the director of the Institute of Aerospace Engineering.
+    image: keynote4.jpg
+    lefttrim: 2.5cm
+    righttrim: 2cm
+  N3FEYP: # Mona Nasser
+    title: "Keynote Lecture 5: Mona Nasser (University of Plymouth) \\\\  Voyaging Through the Vast \\textemdash~Transforming Clinical Research Methods for Interstellar Expeditions"
+    image: keynote5.jpg
+    description: "Human adaptation to the ever-changing conditions of interstellar travel presents unprecedented challenges to our understanding of health and medicine. Despite our efforts, unexpected challenges are inevitable during long-duration interstellar missions. This raises a crucial question: How can we adapt clinical research to develop a more responsive and resilient healthcare infrastructure for interstellar ventures? This presentation will explore innovative methodological approaches that could enhance our preparedness for interstellar travel, based on insights from a series of MetaFuturism Lab workshops." # using an interdisciplinary and multicultural methodology."
+
+    persons:
+      - biography: Mona Nasser is the Director of the Plymouth Institute of Health and Care Research (PIHR) and a Professor of Clinical Epidemiology and Oral Health Research at the University of Plymouth. She is a methodologist, health services researcher, and interdisciplinary scientist. She has been working with members of the Space Medicine Team at the European Astronaut Centre on the Systematic Threat Analysis of Radiation from Space (STARS) project and leads a research group on the Impact of Space Environment on Craniofacial and Dental Structure (ISECS) at the university. # , which involves both systematic reviews of space medicine and primary studies. #She is also an artist leading an art-science project called MetaFuturism Lab, running speculative futuristic immersive workshops to engage individuals from different disciplines and cultural contexts to reimagine scientific and social concepts in the future. She is a methodologist, health services researcher, and interdisciplinary scientist. , and has received recognition for her work on building new frameworks to inform research prioritization processes.
+    lefttrim: 3.9cm
+    righttrim: 3.9cm
