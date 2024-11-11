@@ -166,7 +166,6 @@ footskip=0.5cm,
     {{% endif %}}%
 {{%- endmacro %}}
 
-
 \begin{tcolorbox}[width=\linewidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,breakable,height fixed for=all]
     {{% for event in day['rooms']['Banquet Room'] %}}
     \begin{tikzpicture}
@@ -281,6 +280,32 @@ footskip=0.5cm,
 
 {{% endfor %}}
 
+\begin{center}
+\begin{minipage}{5cm}
+    \begin{tcolorbox}[
+        colback=white,
+        right,
+        width=5cm,
+        sharp corners,
+        size=minimal,
+        halign=center,
+        halign title=center,
+        title=Venue,
+        toptitle=3mm,
+        bottomtitle=3mm,
+        top=2mm,
+        bottom=2mm,
+        colbacktitle=black,
+        opacitybacktitle=0.5,
+        fonttitle=\mediumfont,
+    ]{
+        European Convention Center Luxembourg (ECCL)\\[1mm]
+        \includegraphics[width=\linewidth]{map.pdf}
+        4 Place de l'Europe, 1499 Luxembourg
+    }
+    \end{tcolorbox}%
+\end{minipage}%
+\hspace{3cm}%
 \begin{minipage}{7cm}
 \begin{tcolorbox}[
     enhanced,
@@ -342,30 +367,103 @@ footskip=0.5cm,
     This version was last updated\linebreak[4] on \today.
 \end{tcolorbox}
 \end{minipage}%
-\hfill%
-\begin{minipage}{5cm}
+\end{center}
+
+\newpage
+\begin{center}
+\color{white}\LARGE \centering \shadowtext{Keynote Events}
+\end{center}
+
+{{% for event in featured %}}
+    \vfill
+    \definecolor{thistrack}{HTML}{{{ '{' + event.color[1:] + '}' }}}
+
+    \begin{tcolorbox}[
+        enhanced,
+        title={ 
+            {{{- event.title -}}}
+        },
+        sharp corners,
+        colbacktitle=thistrack,
+        fonttitle=\large\mediumfont,
+        boxsep=0pt,
+        boxrule=0pt,
+        left*=0pt,
+        lefttitle=4mm,
+        toptitle=4mm,
+        bottomtitle=4mm,
+        top=0pt,
+        bottom=0pt,
+        sidebyside,
+        sidebyside align=center,
+        lefthand width=6cm,
+        segmentation empty,
+    ]        
+        {{%- set left = event.lefttrim or '0' -%}}
+        {{%- set right = event.righttrim or '0' -%}}
+
+        \begin{tikzpicture}[]%
+            \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
+                % wtf
+                \adjincludegraphics[height=9.3cm,clip,trim={ {{{- left }}} 0 {{{ right }}} 0}]{
+                    media/{{{- event.image -}}}
+                }%
+            };
+
+            \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
+
+            \draw node[white,anchor=south,yshift=5mm] (DAY) at (current bounding box.south) {
+                \timeregularfont\Huge \scalebox{.8}[1.0]{%
+                    {{{ event.day.strftime("%A") | upper -}}}%
+                }%
+            };
+
+            \draw node[white,above of=DAY] (TIME)  {
+                \timeregularfont\Large {{{ event.start }}} \textendash~ {{{ event.end }}} 
+            };
+        \end{tikzpicture}%
+        
+        \tcblower
+
+        \setlength{\parskip}{1ex}
+        
+        \vspace{1ex}
+        {{{ event.description | latexize }}}
+
+        {
+            \small
+            \color{white!20!black}
+            {{{ event.persons[0].biography | latexize -}}}
+        }
+
+        \vspace{2ex}
+    \end{tcolorbox}
+{{% endfor %}}
+
+% Sponsor Logos
+
+\vfill
+
 \begin{tcolorbox}[
-    colback=white,
-    right,
-    width=5cm,
-    sharp corners,
-    size=minimal,
-    halign=center,
-    halign title=center,
-    title=Venue,
-    toptitle=3mm,
-    bottomtitle=3mm,
-    top=2mm,
-    bottom=2mm,
-    colbacktitle=black,
-    opacitybacktitle=0.5,
-    fonttitle=\mediumfont,
-]{
-    European Convention Center Luxembourg (ECCL)\\[1mm]
-    \includegraphics[width=\linewidth]{map.pdf}
-    4 Place de l'Europe, 1499 Luxembourg
-}
+    width=\paperwidth,center,boxrule=0pt,arc=0pt,auto outer arc,colframe=white,colback=white,valign=center]
+    %
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo1.jpeg}}
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=3cm]{media/logo3.png}}
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo4.png}}
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo7.png}}
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=2cm]{media/logo5.pdf}}
+    \hfill
+    \raisebox{-0.5\height}{\includegraphics[width=4cm]{media/logo8.png}}
+    \hfill
 \end{tcolorbox}
-\end{minipage}
+
+\vspace{1cm}
+
+    
 
 \end{document}

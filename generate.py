@@ -162,6 +162,32 @@ for day in days:
                     if 'affiliation' in person and person['affiliation'] in overrides['affiliations']:
                         person['affiliation'] = overrides['affiliations'][person['affiliation']]
 
+# Create featured events
+featured = []
+for code, override in overrides['featured'].items():
+    found = False
+    this_event = None
+    for day in days:
+        for room in day['rooms'].values():
+            for event in room:
+                if event['code'] == code:
+                    this_event = event
+                    found = True
+                    break
+            if found:
+                break
+        if found:
+            break
+    if not found:
+        log.warning(f"Featured event {code} not found in schedule")
+        continue
+
+    # Apply overrides, if any
+    this_event['day'] = day['date_datetime']
+    this_event = this_event | override
+
+    featured.append(this_event)
+
 # Combine tracks
 for day in days:
     day['date_datetime'] = datetime.strptime(day['date'], "%Y-%m-%d")
@@ -197,7 +223,8 @@ for day in days:
             del room[key]
 
 
-# days = [days[1]]
+#days = [days[1]]
+#days = []
 
 
 env = Environment(
@@ -218,10 +245,18 @@ def abbreviate_name(name):
     return " ".join([f"{part[0]}." if i < len(parts) - 1 else part for i, part in enumerate(parts)])
 env.filters['abbreviate_name'] = abbreviate_name
 
+def latexize(text):
+    if not text:
+        text = ""
+    return text.replace('&', '\\&').replace('%', '\\%').replace('#', '\\#').replace('_', '\\_') \
+        .replace('Prof. ', 'Prof.~') \
+        .replace('Dr. ', 'Dr.~')
+env.filters['latexize'] = latexize
+
 template = env.get_template('schedule.tex.jinja')
 
 with open('schedule.tex', 'w') as f:
-    f.write(template.render(json=json, days=days))
+    f.write(template.render(json=json, days=days, featured=featured))
 
 log.info("Generated schedule stored at schedule.tex")
 
