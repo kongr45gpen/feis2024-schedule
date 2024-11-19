@@ -34,6 +34,7 @@ footskip=0.5cm,
 \usepackage{lastpage}
 \usepackage{xcolor-material}
 \usepackage{ragged2e}
+\usepackage{microtype}
 
 
 \usetikzlibrary{fit}
@@ -193,7 +194,7 @@ footskip=0.5cm,
                 \par%
                 \justifying%
                 \setlength{\parskip}{1ex}
-                \color{thistrack!20!black}%
+                %\color{thistrack!20!black}%
                 \small%
                 \fontfamily{\familydefault}\selectfont%
                 Seminars are 3-hour presentations on a single subject presented by individuals familiar with the topic and providing an in-depth look at that subject. Seminars are not included in the IRG Symposium costs and do not require Symposium membership to attend.
@@ -308,7 +309,7 @@ For registration and more information, please visit: {\color{conference!50!black
                 \par%
                 \justifying%
                 \setlength{\parskip}{1ex}
-                \color{thistrack!20!black}%
+                %\color{thistrack!20!black}%
                 \small%
                 \fontfamily{\familydefault}\selectfont%
                 The first public event of the FEIS2024 symposium will feature three prominent Science Fiction authors, and will be open to all space professionals and enthusiasts on December 2\textsuperscript{nd}.
@@ -634,10 +635,12 @@ He lives with his wife and son between Portugal and Greece.
     {\color{gray}\footnotesize%
         %
             Julius Karlapp%%
+                \ (Dresden University of Technology)%
+            %
             ,\@ %
         %
             M.~Tajmar%%
-                \ (Dresden University of Technology)%
+                \ (TUD Dresden University of Technology)%
             %
             %
         %
@@ -2654,7 +2657,7 @@ He lives with his wife and son between Portugal and Greece.
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
                 \adjincludegraphics[height=9.3cm,clip,trim={0 0 0 0}]{
-                    media/keynote1.jpg}%
+                    media/keynote3.png}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -2675,12 +2678,12 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        .
+        We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. Starting with the estimation of parameters such as divergence and power required, we arrive at the dimensioning of the transmission system. This is achieved with phased-array grating couplers. Some implementation models for these devices are presented. Finally, the optimal error-correction code for this type of communication has been worked out and will be briefly presented. By drawing inspiration from the methods of Quantum Communication in space, the preparation of the pulses required for communication from the sail can also provide significant metrological information for studying the kinematics of solar sails.
 
         {
             \small
             \color{white!20!black}
-            }
+            Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in Space using orbiting retroreflectors, adopting polarization and temporal modes. His past research topics include the Atomic Physics in the attosecond domain, the generation of high-order harmonics, the multiphoton ionization and the ultrafast optics in extreme ultraviolet and X-rays domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for Space and ground networks.}
 
         \vspace{2ex}
     \end{tcolorbox}

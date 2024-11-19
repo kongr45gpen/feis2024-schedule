@@ -1,5 +1,7 @@
 *:Zone.Identifier
 __pycache__
+.env
+/output
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

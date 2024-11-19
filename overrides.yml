@@ -83,9 +83,12 @@ featured:
     image: public2.jpg
     lefttrim: 3.4cm
     righttrim: 5.6cm
-  38CABN:
+  38CABN: # Paolo Villoresi
     title: "Keynote Lecture 3: Paolo Villoresi (University of Padova) \\\\  Harnessing the light emission for extreme space optical communication"
-    image: keynote1.jpg
+    image: keynote3.png
+    description: We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. Starting with the estimation of parameters such as divergence and power required, we arrive at the dimensioning of the transmission system. This is achieved with phased-array grating couplers. Some implementation models for these devices are presented. Finally, the optimal error-correction code for this type of communication has been worked out and will be briefly presented. By drawing inspiration from the methods of Quantum Communication in space, the preparation of the pulses required for communication from the sail can also provide significant metrological information for studying the kinematics of solar sails.
+    persons:
+      - biography: Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in Space using orbiting retroreflectors, adopting polarization and temporal modes. His past research topics include the Atomic Physics in the attosecond domain, the generation of high-order harmonics, the multiphoton ionization and the ultrafast optics in extreme ultraviolet and X-rays domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for Space and ground networks.
   AT8ECC: # Martin Tajmar
     title: "Keynote Lecture 4: Martin Tajmar (TU Dresden) \\\\  Overview of Breakthrough Propulsion at TU Dresden"
     description: Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.

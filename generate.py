@@ -10,6 +10,10 @@ import pytz
 import copy
 import yaml
 import csv
+import xlsxwriter
+import os
+import json
+from dotenv import load_dotenv
 
 FORMAT = "%(message)s"
 logging.basicConfig(
@@ -19,23 +23,58 @@ logging.basicConfig(
 log = logging.getLogger("rich")
 
 parser = argparse.ArgumentParser(description='Generate a LaTeX schedule from a frab-compatible .json file')
+parser.add_argument('-r', '--refresh', action='store_true', help='Refresh the schedule online instead of using files')
 
 args = parser.parse_args()
+load_dotenv()
 
 log.info("Welcome to the pretalx rich handler!")
 
-# Schedule in FRAB format
-data = requests.get('https://pretalx.electroserv.eu/feis2024/schedule/export/schedule.json')
-with open('frab.json', 'w') as f:
-    f.write(data.text)
-json = data.json()
+if args.refresh:
+    # Schedule in FRAB format
+    data = requests.get('https://pretalx.electroserv.eu/feis2024/schedule/export/schedule.json')
+    with open('frab.json', 'w') as f:
+        f.write(data.text)
+    json = data.json()
 
-# Schedule in original pretalx format
-# This is needed for non-submission slots (breaks) that are not exported to the frab schedule
-data_aux = requests.get('https://pretalx.electroserv.eu/feis2024/schedule/widgets/schedule.json')
-with open('schedule.json', 'w') as f:
-    f.write(data_aux.text)
-json_aux = data_aux.json()
+    # Schedule in original pretalx format
+    # This is needed for non-submission slots (breaks) that are not exported to the frab schedule
+    data_aux = requests.get('https://pretalx.electroserv.eu/feis2024/schedule/widgets/schedule.json')
+    with open('schedule.json', 'w') as f:
+        f.write(data_aux.text)
+    json_aux = data_aux.json()
+else:
+    with open('frab.json') as f:
+        json = yaml.safe_load(f)
+    with open('schedule.json') as f:
+        json_aux = yaml.safe_load(f)
+
+# Session answers
+if os.getenv('PRETALX_API_KEY') and args.refresh:
+    headers = {
+        'Authorization': f'Token {os.getenv("PRETALX_API_KEY")}'
+    }
+    url = 'https://pretalx.electroserv.eu/feis2024/schedule/export/submission-questions.csv'
+    answers = requests.get(url, headers=headers)
+    with open('feis2024-submission-questions.csv', 'wb') as f:
+        f.write(answers.content)
+
+    url = 'https://pretalx.electroserv.eu/feis2024/schedule/export/speaker-questions.csv'
+    answers = requests.get(url, headers=headers)
+    with open('feis2024-speaker-questions.csv', 'wb') as f:
+        f.write(answers.content)
+
+    url = 'https://pretalx.electroserv.eu/api/events/feis2024/submissions/'
+    submission_info = []
+    while url:
+        submission_json = requests.get(url, headers=headers).json()
+        submission_info += submission_json['results']
+        url = submission_json['next']
+    
+    with open('feis2024-submission-info.yml', 'w') as f:
+        yaml.dump(submission_info, f)
+
+# Speaker answers
 
 
 # Answers from authors from CSV file
@@ -47,6 +86,18 @@ with open('feis2024-speaker-questions.csv', newline='') as csvfile:
             speaker_answers[row['code']] = {}
             speaker_answers[row['code']]['name'] = row['name']
         speaker_answers[row['code']][row['question']] = row['answer']
+
+session_answers= {}
+with open('feis2024-submission-questions.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        if not row['code'] in session_answers:
+            session_answers[row['code']] = {}
+        session_answers[row['code']][row['question']] = row['answer']
+
+submission_details = {}
+with open('feis2024-submission-info.yml') as f:
+    submission_details = yaml.safe_load(f)
 
 # Parse JSON
 days = json['schedule']['conference']['days']
@@ -81,6 +132,9 @@ for day in days:
                 event['color'] = '#7f2ca0'
 
             event['code'] = event['url'].split('/')[-2]
+
+            if event['code'] in session_answers:
+                event['answers'] = session_answers[event['code']]
 
             for speaker in event['persons']:
                 try:
@@ -161,6 +215,73 @@ for day in days:
                 for person in event['persons']:
                     if 'affiliation' in person and person['affiliation'] in overrides['affiliations']:
                         person['affiliation'] = overrides['affiliations'][person['affiliation']]
+
+# Create xlsx files for OnTime
+workbook = xlsxwriter.Workbook(f"output/ontime_{datetime.now()}.xlsx")
+debug_json = {}
+for day in days:
+    for room_name, room in day['rooms'].items():
+        worksheet = workbook.add_worksheet(f'{day["date"]} {day["date_datetime"].strftime("%A")} {room_name}'[0:31])
+        worksheet.write(0, 0, "time start")
+        worksheet.write(0, 1, "time end")
+        worksheet.write(0, 2, "title")
+        worksheet.write(0, 3, "Speakers")
+        worksheet.write(0, 4, "Track")
+        worksheet.write(0, 5, "Code")
+        worksheet.write(0, 6, "colour")
+        worksheet.write(0, 7, "avatar")
+        worksheet.write(0, 8, "notes")
+
+        for i, event in enumerate(room):
+            row = []
+            row.append(event['start'])
+            row.append(event['end'])
+            row.append(event['title'])
+            if 'persons' in event:
+                row.append(", ".join([person['public_name'] for person in event['persons']]))
+            else:
+                row.append("")
+            row.append(event['track'])
+            row.append(event['code'])
+            row.append(event['color'] if 'color' in event else '')
+            if 'persons' in event and len(event['persons']) > 0 and 'avatar' in event['persons'][0] and event['persons'][0]['avatar']:
+                row.append(event['persons'][0]['avatar'])
+            else:
+                row.append("")
+
+            technical = ""
+            # Get (internal) notes from submission details
+            submission = next(filter(lambda submission: submission['code'] == event['code'], submission_details), None)
+            if submission:
+                for attribute in ['notes', 'internal_notes']:
+                    if attribute in submission and submission[attribute] and submission[attribute] != "":
+                        technical += f"{submission[attribute]}. "
+            elif event['code']:
+                log.warning(f"Submission {event['code']} not found in submission details")
+
+            # Get question answers (from speakers) from csv file
+            q = ['Are you using your own laptop?', 'Does your presentation include audio?', 'Do you have a microphone preference?']
+            for question in q:
+                try:
+                    technical += f"{question.split()[-1].capitalize()}: {event['answers'][question]}. "
+                except KeyError:
+                    pass
+                except TypeError:
+                    pass
+
+            if technical != "":
+                log.debug(f"Technical details for {event['title']}: `{technical}`")
+            
+            row.append(technical)
+
+            for j, cell in enumerate(row):
+                worksheet.write(i + 1, j, cell)
+            
+            debug_json[event['code'] if 'code' in event else ''] = row
+workbook.close()
+
+with open('output/ontime.yml', 'w') as f:
+    yaml.dump(debug_json, f)
 
 # Create featured events
 featured = []
