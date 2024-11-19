@@ -2,6 +2,11 @@
 __pycache__
 .env
 /output
+feis2024-speaker-questions.csv
+feis2024-submission-questions.csv
+feis2024-submission-info.yml
+frab.json
+schedule.json
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
