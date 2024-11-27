@@ -3,7 +3,7 @@
 \usepackage[margin=1.2cm,
 %showframe% <- only to show the page layout
 paperheight=380mm,
-footskip=0.5cm,
+footskip=0.7cm,
 ]{geometry}
 
 \usepackage[no-math]{fontspec}
@@ -246,14 +246,14 @@ footskip=0.5cm,
                 {{{ event.abstract }}}%
                 }%
             {{% endif %}}%
-            {{% if event.subtitle %}}%
-                \\[0ex]%
-                \color{gray}\footnotesize%
-                {{{ event.subtitle }}}%
-            {{% endif %}}%
             {{% if event.track != "Keynote" %}}%
                 {{{ speakers(event.persons) }}}%
             {{% endif %}}%
+            {{% if event.postfix %}}%
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                {{{ event.postfix -}}}%
+            {{%- endif -%}}%
             };
 
             
@@ -465,14 +465,14 @@ footskip=0.5cm,
             halign=center,
             halign lower=flush center,
             % title={  },
-        ]
-            \color{white}
+        ]%
+            \color{white}%
             \textbf{%
                 {{{ event.registration.title -}}}%
-            }
-            \tcblower
-            \color{white}
-            {{{ event.registration.text }}}
+            }%
+            \tcblower%
+            \color{white}%
+            {{{ event.registration.text }}}%
         \end{tcolorbox}
         {{% endif %}}
 
@@ -493,18 +493,21 @@ footskip=0.5cm,
     \hfill
     \raisebox{-0.5\height}{\includegraphics[width=3cm]{media/logo3.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo4.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=2cm]{media/logo4.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo7.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=1.9cm]{media/logo7.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2cm]{media/logo5.pdf}}
+    \raisebox{-0.5\height}{\adjincludegraphics[width=3.7cm,trim={1.5cm 0 3.5cm 0},clip]{media/logo5.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=4cm]{media/logo8.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=3.5cm]{media/logo8.png}}
     \hfill
 \end{tcolorbox}
 
-\vspace{1cm}
+\begin{center}%
+\color{white!80!black}%
+Background designed by Maciej Rebisz for Science Now
+\end{center}
 
-    
+\vspace{1cm}
 
 \end{document}

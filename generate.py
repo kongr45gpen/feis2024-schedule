@@ -161,7 +161,7 @@ for talk in json_aux['talks']:
             "end": end_short,
             "start_datetime": start,
             "end_datetime": end,
-            "code": ""
+            "code": f"BRK-{start.astimezone(timezone).weekday()}-{start_short.replace(':', '')}",
         }
 
         # Shove break into the schedule, right before the first session whose start time is after the end of the break

@@ -20,6 +20,31 @@ talks:
     abstract: |
       The first public event of the FEIS2024 symposium will feature three prominent Science Fiction authors, and will be open to all space professionals and enthusiasts on December 2\textsuperscript{nd}.
 
+          \begin{tcolorbox}[
+            frame hidden,
+            sidebyside,
+            bicolor,
+            colback=thistrack!70!black,
+            colbacklower=thistrack!90!black,
+            size=title,
+            top=1mm,
+            bottom=1mm,
+            boxrule=0pt,
+            lefthand ratio=0.5,
+            sidebyside align=center,
+            halign=center,
+            halign lower=flush center,
+            % title={  },
+        ]%
+            \color{white}%
+            \textbf{%
+                FREE REGISTRATION REQUIRED%%
+            }%
+            \tcblower%
+            \color{white}%
+            \url{https://feis2024.uni.lu/register/authors}%
+        \end{tcolorbox}
+
 
       \begin{minipage}[c]{0.2\linewidth}
       \includegraphics[width=\textwidth]{media/author1.jpg}
@@ -44,29 +69,6 @@ talks:
       With almost 2 million books sold, \textbf{Joshua T. Calvert} is at the forefront of current international science fiction. His German novel “Singularity”, published by Fischer-Tor, won the prestigious “Seraph” fantasy literature prize for best novel in 2022. The English translation of his Kindle hit “The Fossil” won second place in the 2021 American “Reader’s Favorite Awards” for best novel. His books are available in English, Spanish and German. % As a hybrid author, his novels are indie-published and published by well-known publishers.
       He lives with his wife and son between Portugal and Greece. 
       \end{minipage}
-
-      \begin{tcolorbox}[
-            frame hidden,
-            sidebyside,
-            bicolor,
-            colback=thistrack!70!black,
-            colbacklower=thistrack!90!black,
-            size=title,
-            boxrule=0pt,
-            lefthand ratio=0.6,
-            sidebyside align=center,
-            halign=center,
-            halign lower=flush center,
-            % title={  },
-        ]
-            \color{white}
-            \textbf{%
-                FREE REGISTRATION REQUIRED%
-            }
-            \tcblower
-            \color{white}
-            \url{https://feis2024.uni.lu/register/authors}
-        \end{tcolorbox}
     persons: []
     tagleft: OPEN TO PUBLIC
   3YSYC3:
@@ -79,11 +81,41 @@ talks:
     persons_reorder: [ LXVJWA, T3RTWM, TMWG7N, YG77BJ, BFEXM7, 7Q9VMD, JPJANQ ]
   89JDYA:
     tagright: OPEN TO PUBLIC
+    postfix: |
+      \begin{tcolorbox}[
+        frame hidden,
+        sidebyside,
+        bicolor,
+        colback=thistrack!70!black,
+        colbacklower=thistrack!90!black,
+        size=title,
+        top=1mm,
+        bottom=1mm,
+        middle=0pt,
+        boxrule=0pt,
+        lefthand ratio=0.45,
+        sidebyside align=center,
+        halign=center,
+        halign lower=flush center,
+        % title={  },
+      ]%
+        \color{white}%
+        \textbf{%
+            FREE REGISTRATION REQUIRED%
+        }%
+        \tcblower%
+        \color{white}%
+        \url{https://feis2024.uni.lu/register/seager}%
+      \end{tcolorbox}%
   FKYPG7:
     title: Opening Reception
-    subtitle: ECCL, La Table du Belvédère
+    postfix: ECCL, La Table du Belvédère
   9U8E7G:
-    subtitle: Junco Restaurant \& Bar
+    postfix: Junco Restaurant \& Bar
+  YRCWKL:
+    title: Working Track Outbrief
+  BRK-0-1945:
+    title: Space Cafe
 affiliations:
   Initiative for Interstellar Studies: I4IS
   Initiative for Interstellar Studies I4IS: I4IS
@@ -126,14 +158,12 @@ featured:
     registration: 
       title: FREE REGISTRATION REQUIRED
       text: "\\footnotesize\\url{https://feis2024.uni.lu/register/seager}"
-  3XGUSA: # Harry Atwater
-    title: "Keynote Lecture 4: Harry Atwater (California Institute of Technology) \\\\  StarShot \\textemdash~from physics to spacecraft"
-    image: keynote2.jpg
-    lefttrim: 0.3cm
-    righttrim: 1cm
-    description: Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
+  38CABN: # Paolo Villoresi
+    title: "Keynote Lecture 4: Paolo Villoresi (University of Padova) \\\\  Harnessing the light emission for extreme space optical communication"
+    image: keynote3.png
+    description: We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
     persons:
-      - biography: Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.
+      - biography: Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.
   AT8ECC: # Martin Tajmar
     title: "Keynote Lecture 5: Martin Tajmar (TU Dresden) \\\\  Overview of Breakthrough Propulsion at TU Dresden"
     description: Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
@@ -142,17 +172,18 @@ featured:
     image: keynote4.jpg
     lefttrim: 2.5cm
     righttrim: 2cm
-  38CABN: # Paolo Villoresi
-    title: "Keynote Lecture 6: Paolo Villoresi (University of Padova) \\\\  Harnessing the light emission for extreme space optical communication"
-    image: keynote3.png
-    description: We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
+  3XGUSA: # Harry Atwater
+    title: "Keynote Lecture 6: Harry Atwater (California Institute of Technology) \\\\  StarShot \\textemdash~from physics to spacecraft"
+    image: keynote2.jpg
+    lefttrim: 0.3cm
+    righttrim: 1cm
+    description: Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
     persons:
-      - biography: Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.
+      - biography: Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.
   N3FEYP: # Mona Nasser
     title: "Keynote Lecture 7: Mona Nasser (University of Plymouth) \\\\  Voyaging Through the Vast \\textemdash~Transforming Clinical Research Methods for Interstellar Expeditions"
     image: keynote5.jpg
     description: "Human adaptation to the ever-changing conditions of interstellar travel presents unprecedented challenges to our understanding of health and medicine. Despite our efforts, unexpected challenges are inevitable during long-duration interstellar missions. This raises a crucial question: How can we adapt clinical research to develop a more responsive and resilient healthcare infrastructure for interstellar ventures? This presentation will explore innovative methodological approaches that could enhance our preparedness for interstellar travel, based on insights from a series of MetaFuturism Lab workshops." # using an interdisciplinary and multicultural methodology."
-
     persons:
       - biography: Mona Nasser is the Director of the Plymouth Institute of Health and Care Research (PIHR) and a Professor of Clinical Epidemiology and Oral Health Research at the University of Plymouth. She is a methodologist, health services researcher, and interdisciplinary scientist. She has been working with members of the Space Medicine Team at the European Astronaut Centre on the Systematic Threat Analysis of Radiation from Space (STARS) project and leads a research group on the Impact of Space Environment on Craniofacial and Dental Structure (ISECS) at the university. # , which involves both systematic reviews of space medicine and primary studies. #She is also an artist leading an art-science project called MetaFuturism Lab, running speculative futuristic immersive workshops to engage individuals from different disciplines and cultural contexts to reimagine scientific and social concepts in the future. She is a methodologist, health services researcher, and interdisciplinary scientist. , and has received recognition for her work on building new frameworks to inform research prioritization processes.
     lefttrim: 3.9cm

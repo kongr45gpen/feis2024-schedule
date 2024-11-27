@@ -3,7 +3,7 @@
 \usepackage[margin=1.2cm,
 %showframe% <- only to show the page layout
 paperheight=380mm,
-footskip=0.5cm,
+footskip=0.7cm,
 ]{geometry}
 
 \usepackage[no-math]{fontspec}
@@ -88,13 +88,13 @@ footskip=0.5cm,
             \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
             \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
 
-            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.19}};
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.20}};
         \end{tikzpicture}%
     }
 
     \noindent%
     \shadowcolor{black}
-    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.19}%
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.20}%
     \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
     \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
 
@@ -187,8 +187,6 @@ footskip=0.5cm,
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Introductory Seminars%
-            
-                \texttt{MEGK9J}%
             %
             %
                 %~\\[1ex]%
@@ -214,8 +212,8 @@ For registration and more information, please visit: {\color{conference!50!black
                 }%
             %
             %
-            %
                 %%
+            %
             %
             };
 
@@ -260,18 +258,15 @@ For registration and more information, please visit: {\color{conference!50!black
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Opening Reception%
-            
-                \texttt{FKYPG7}%
             %
-            %
-            %
-                \\[0ex]%
-                \color{gray}\footnotesize%
-                ECCL, La Table du Belvédère%
             %
             %
                 %%
             %
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                ECCL, La Table du Belvédère%%
             };
 
             
@@ -312,8 +307,6 @@ For registration and more information, please visit: {\color{conference!50!black
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Science Fiction Authors Night%
-            
-                \texttt{M98DYT}%
             %
             %
                 %~\\[1ex]%
@@ -325,6 +318,31 @@ For registration and more information, please visit: {\color{conference!50!black
                 \small%
                 \fontfamily{\familydefault}\selectfont%
                 The first public event of the FEIS2024 symposium will feature three prominent Science Fiction authors, and will be open to all space professionals and enthusiasts on December 2\textsuperscript{nd}.
+
+    \begin{tcolorbox}[
+      frame hidden,
+      sidebyside,
+      bicolor,
+      colback=thistrack!70!black,
+      colbacklower=thistrack!90!black,
+      size=title,
+      top=1mm,
+      bottom=1mm,
+      boxrule=0pt,
+      lefthand ratio=0.5,
+      sidebyside align=center,
+      halign=center,
+      halign lower=flush center,
+      % title={  },
+  ]%
+      \color{white}%
+      \textbf{%
+          FREE REGISTRATION REQUIRED%%
+      }%
+      \tcblower%
+      \color{white}%
+      \url{https://feis2024.uni.lu/register/authors}%
+  \end{tcolorbox}
 
 
 \begin{minipage}[c]{0.2\linewidth}
@@ -354,8 +372,8 @@ He lives with his wife and son between Portugal and Greece.
                 }%
             %
             %
-            %
                 %%
+            %
             %
             };
 
@@ -393,7 +411,7 @@ He lives with his wife and son between Portugal and Greece.
         
 
             \fill[rounded corners=1mm,gray!50!white]
-            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Space Café};
+            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Space Cafe};
 
             \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 19:45 };
             \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 21:30 };     
@@ -503,13 +521,11 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Welcome by the organizers, Conference Agenda Review%
-            
-                \texttt{MAE9VF}%
-            %
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -552,8 +568,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Pete Worden (Breakthrough Initiatives): Life in the Universe and Private Sector Space Science Initiatives%
-            
-                \texttt{TSTQQY}%
             %
             %
             %
@@ -656,7 +670,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 3SWH7H }};
+                };
 
 
                 
@@ -684,7 +698,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ C8YP9M }};
+                };
 
 
                 
@@ -694,68 +708,6 @@ He lives with his wife and son between Portugal and Greece.
             
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A3) at (A2.south west)
-                {\mediumfont%
-                Towards optical levitation of centimeter scale photonic crystal lightsails%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Ata Keşkekler%%
-            ,\@ %
-        %
-            L.~Norder%%
-            ,\@ %
-        %
-            R.~A.~Norte%%
-                \ (TU Delft)%
-            %
-            %
-        %
-    }%
-    %%
-                \\\texttt{ 7Z9SNY }};
-
-
-                
-                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 11:00 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A4) at (A3.south west)
-                {\mediumfont%
-                Optimal Solar Sail Trajectories for Fast Deep Space Missions%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Alesia Herasimenka%%
-                \ (University of Luxembourg)%
-            %
-            ,\@ %
-        %
-            L.~Dell'Elce%%
-                \ (Centre Inria de l'Université Côte d'Azur)%
-            %
-            ,\@ %
-        %
-            A.~M.~Hein%%
-                \ (University of Luxembourg)%
-            %
-            %
-        %
-    }%
-    %%
-                \\\texttt{ 8UNG3W }};
-
-
-                
-                \node[] (S) at (A4 -| 0,0) {\timelightfont\large 11:20 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A5) at (A4.south west)
                 {\mediumfont%
                 Pentagonal Photonic Crystal Mirrors: Scalable Lightsails with Enhanced Acceleration via Neural Topology Optimization%
                 %
@@ -798,7 +750,69 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 3P9J7E }};
+                };
+
+
+                
+                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 11:00 };
+                
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A4) at (A3.south west)
+                {\mediumfont%
+                Optimal Solar Sail Trajectories for Fast Deep Space Missions%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Alesia Herasimenka%%
+                \ (University of Luxembourg)%
+            %
+            ,\@ %
+        %
+            L.~Dell'Elce%%
+                \ (Centre Inria de l'Université Côte d'Azur)%
+            %
+            ,\@ %
+        %
+            A.~M.~Hein%%
+                \ (University of Luxembourg)%
+            %
+            %
+        %
+    }%
+    %%
+                };
+
+
+                
+                \node[] (S) at (A4 -| 0,0) {\timelightfont\large 11:20 };
+                
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A5) at (A4.south west)
+                {\mediumfont%
+                Towards optical levitation of centimeter scale photonic crystal lightsails%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Ata Keşkekler%%
+            ,\@ %
+        %
+            L.~Norder%%
+            ,\@ %
+        %
+            R.~A.~Norte%%
+                \ (TU Delft)%
+            %
+            %
+        %
+    }%
+    %%
+                };
 
 
                 
@@ -864,8 +878,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Slava Turyshev (NASA JPL): Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens%
-            
-                \texttt{GPBQGN}%
             %
             %
             %
@@ -922,7 +934,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ CZHGML }};
+                };
 
 
                 
@@ -945,7 +957,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 9VT3HU }};
+                };
 
 
                 
@@ -973,7 +985,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 3YSYC3 }};
+                };
 
 
                 
@@ -1039,8 +1051,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Richard A. Norte (Delft University of Technology): Propelling Interstellar Exploration: Extreme-Aspect-Ratio Metamaterials in a Post-Moore Era%
-            
-                \texttt{XTQAZ9}%
             %
             %
             %
@@ -1100,7 +1110,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ RVC9DP }};
+                };
 
 
                 
@@ -1123,7 +1133,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ TA8YBE }};
+                };
 
 
                 
@@ -1146,7 +1156,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 3GVPLZ }};
+                };
 
 
                 
@@ -1188,13 +1198,11 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Shark Tank: Pitch the Space Future%
-            
-                \texttt{PQLVSH}%
-            %
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -1239,9 +1247,6 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Public Outreach Event: Next destinations for Interstellar Travel%
-            
-                \texttt{89JDYA}%
-            %
             %
             %
             %
@@ -1257,6 +1262,35 @@ He lives with his wife and son between Portugal and Greece.
     }%
     %%
             %
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                \begin{tcolorbox}[
+  frame hidden,
+  sidebyside,
+  bicolor,
+  colback=thistrack!70!black,
+  colbacklower=thistrack!90!black,
+  size=title,
+  top=1mm,
+  bottom=1mm,
+  middle=0pt,
+  boxrule=0pt,
+  lefthand ratio=0.45,
+  sidebyside align=center,
+  halign=center,
+  halign lower=flush center,
+  % title={  },
+]%
+  \color{white}%
+  \textbf{%
+      FREE REGISTRATION REQUIRED%
+  }%
+  \tcblower%
+  \color{white}%
+  \url{https://feis2024.uni.lu/register/seager}%
+\end{tcolorbox}%
+%%
             };
 
             
@@ -1381,8 +1415,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Paolo Villoresi (University of Padova): Harnessing the light emission for extreme space optical communication%
-            
-                \texttt{38CABN}%
             %
             %
             %
@@ -1462,7 +1494,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ FUX8RQ }};
+                };
 
 
                 
@@ -1498,7 +1530,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ ZHPGYJ }};
+                };
 
 
                 
@@ -1521,7 +1553,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 7CLGBP }};
+                };
 
 
                 
@@ -1544,7 +1576,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 7AAGUZ }};
+                };
 
 
                 
@@ -1567,7 +1599,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ PNSTXR }};
+                };
 
 
                 
@@ -1633,8 +1665,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Martin Tajmar (TU Dresden): Overview of Breakthrough Propulsion at TU Dresden%
-            
-                \texttt{AT8ECC}%
             %
             %
             %
@@ -1691,7 +1721,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ BAN8EC }};
+                };
 
 
                 
@@ -1719,7 +1749,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ WQWEDZ }};
+                };
 
 
                 
@@ -1742,7 +1772,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ XCMLJW }};
+                };
 
 
                 
@@ -1808,8 +1838,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Harry Atwater (California Institute of Technology): StarShot - from physics to spacecraft%
-            
-                \texttt{3XGUSA}%
             %
             %
             %
@@ -1892,7 +1920,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ QVCWM9 }};
+                };
 
 
                 
@@ -1923,7 +1951,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ BJ7TYA }};
+                };
 
 
                 
@@ -1944,7 +1972,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ ZWZYG9 }};
+                };
 
 
                 
@@ -1986,13 +2014,11 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Working Track%
-            
-                \texttt{FEYFU3}%
-            %
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -2034,13 +2060,11 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Luxembourg City Tour%
-            
-                \texttt{8T8WDF}%
-            %
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -2082,18 +2106,15 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Gala Dinner%
-            
-                \texttt{9U8E7G}%
             %
-            %
-            %
-                \\[0ex]%
-                \color{gray}\footnotesize%
-                Junco Restaurant \& Bar%
             %
             %
                 %%
             %
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                Junco Restaurant \& Bar%%
             };
 
             
@@ -2215,8 +2236,6 @@ He lives with his wife and son between Portugal and Greece.
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
             Mona Nasser (University of Plymouth): Voyaging Through the Vast — Transforming Clinical Research Methods for Interstellar Expeditions%
-            
-                \texttt{N3FEYP}%
             %
             %
             %
@@ -2296,7 +2315,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ BQNXFY }};
+                };
 
 
                 
@@ -2339,7 +2358,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ RQHMC7 }};
+                };
 
 
                 
@@ -2371,7 +2390,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 8MWAJE }};
+                };
 
 
                 
@@ -2394,7 +2413,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ JGCW3C }};
+                };
 
 
                 
@@ -2433,7 +2452,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                \\\texttt{ 3HDJKA }};
+                };
 
 
                 
@@ -2497,14 +2516,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Working Tracks Outbrief%
-            
-                \texttt{YRCWKL}%
-            %
+            Working Track Outbrief%
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -2569,13 +2586,11 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Visit to Luxembourg space companies%
-            
-                \texttt{NM9WJG}%
-            %
             %
             %
             %
                 %%
+            %
             %
             };
 
@@ -2949,14 +2964,14 @@ He lives with his wife and son between Portugal and Greece.
             halign=center,
             halign lower=flush center,
             % title={  },
-        ]
-            \color{white}
+        ]%
+            \color{white}%
             \textbf{%
                 FREE REGISTRATION REQUIRED%
-            }
-            \tcblower
-            \color{white}
-            \footnotesize\url{https://feis2024.uni.lu/register/seager}
+            }%
+            \tcblower%
+            \color{white}%
+            \footnotesize\url{https://feis2024.uni.lu/register/seager}%
         \end{tcolorbox}
         
 
@@ -2969,7 +2984,7 @@ He lives with his wife and son between Portugal and Greece.
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 4: Harry Atwater (California Institute of Technology) \\  StarShot \textemdash~from physics to spacecraft},
+        title={Keynote Lecture 4: Paolo Villoresi (University of Padova) \\  Harnessing the light emission for extreme space optical communication},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2988,8 +3003,8 @@ He lives with his wife and son between Portugal and Greece.
     ]\begin{tikzpicture}[]%
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={0.3cm 0 1cm 0}]{
-                    media/keynote2.jpg}%
+                \adjincludegraphics[height=9.3cm,clip,trim={0 0 0 0}]{
+                    media/keynote3.png}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -3001,7 +3016,7 @@ He lives with his wife and son between Portugal and Greece.
             };
 
             \draw node[white,above of=DAY] (TIME)  {
-                \timeregularfont\Large 15:50 \textendash~ 16:40 
+                \timeregularfont\Large 09:00 \textendash~ 09:50 
             };
         \end{tikzpicture}%
         
@@ -3010,12 +3025,12 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
+        We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
 
         {
             \small
             \color{white!20!black}
-            Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.}
+            Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.}
 
         
 
@@ -3087,7 +3102,7 @@ He lives with his wife and son between Portugal and Greece.
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 6: Paolo Villoresi (University of Padova) \\  Harnessing the light emission for extreme space optical communication},
+        title={Keynote Lecture 6: Harry Atwater (California Institute of Technology) \\  StarShot \textemdash~from physics to spacecraft},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -3106,8 +3121,8 @@ He lives with his wife and son between Portugal and Greece.
     ]\begin{tikzpicture}[]%
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={0 0 0 0}]{
-                    media/keynote3.png}%
+                \adjincludegraphics[height=9.3cm,clip,trim={0.3cm 0 1cm 0}]{
+                    media/keynote2.jpg}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -3119,7 +3134,7 @@ He lives with his wife and son between Portugal and Greece.
             };
 
             \draw node[white,above of=DAY] (TIME)  {
-                \timeregularfont\Large 09:00 \textendash~ 09:50 
+                \timeregularfont\Large 15:50 \textendash~ 16:40 
             };
         \end{tikzpicture}%
         
@@ -3128,12 +3143,12 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
+        Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
 
         {
             \small
             \color{white!20!black}
-            Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.}
+            Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.}
 
         
 
@@ -3213,18 +3228,21 @@ He lives with his wife and son between Portugal and Greece.
     \hfill
     \raisebox{-0.5\height}{\includegraphics[width=3cm]{media/logo3.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo4.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=2cm]{media/logo4.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2.5cm]{media/logo7.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=1.9cm]{media/logo7.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=2cm]{media/logo5.pdf}}
+    \raisebox{-0.5\height}{\adjincludegraphics[width=3.7cm,trim={1.5cm 0 3.5cm 0},clip]{media/logo5.png}}
     \hfill
-    \raisebox{-0.5\height}{\includegraphics[width=4cm]{media/logo8.png}}
+    \raisebox{-0.5\height}{\includegraphics[width=3.5cm]{media/logo8.png}}
     \hfill
 \end{tcolorbox}
 
-\vspace{1cm}
+\begin{center}%
+\color{white!80!black}%
+Background designed by Maciej Rebisz for Science Now
+\end{center}
 
-    
+\vspace{1cm}
 
 \end{document}
