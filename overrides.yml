@@ -89,8 +89,8 @@ featured:
     title: "Keynote Lecture 3: Richard A.\\ Norte (Delft University of Technology) \\\\ Propelling Interstellar Exploration: Extreme-Aspect-Ratio Metamaterials in a Post-Moore Era"
     description: "For the past half century, Moore's Law has steered the course of nanotechnology, propelling miniaturization in all 3 dimensions. As we approach its limits, our lab is exploring a new kind of nanotechnology that extends to large distances in the $X$ and $Y$ axes while remaining nanoscale in $Z$. The unique properties of these extreme-aspect-ratio metamaterials can advance applications such as missions that aim to reach Alpha Centauri in 20 years, instead of the 10\\,000 years possible today. This talk will examine opportunities arising from the integration of advanced nanofabrication and high-power optomechanical experiments, as well as our efforts to use lightsail materails to stably levitate objects over 100\\,000 times more massive than anything levitated with laser light to date."
     image: keynote7.jpg
-    lefttrim: 1.7cm
-    righttrim: 1.2cm
+    lefttrim: 1.9cm
+    righttrim: 1.4cm
     persons:
       - biography: Richard A.\ Norte is a faculty member at TU Delft in the Netherlands. His research group develops cutting-edge nanotechnologies for quantum hardware. His work has been featured in Nature, Nature Photonics, Science, Physical Review Letters, and on the cover of Scientific American. His team has achieved significant breakthroughs in laser sail nano-manufacturing, reducing fabrication times from 15 years to a single day by integrating nanophotonics, fabrication techniques, and economic considerations of the Starshot mission.
   89JDYA: # Sara Seager
