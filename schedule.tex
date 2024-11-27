@@ -2,11 +2,11 @@
 
 \usepackage[margin=1.2cm,
 %showframe% <- only to show the page layout
-paperheight=350mm,
+paperheight=380mm,
 footskip=0.5cm,
 ]{geometry}
 
-\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
 %\setmainfont{Montserrat}
 
 \newfontfamily\headingfont[Path=./fonts/]{Montserrat-Medium.ttf}
@@ -35,6 +35,10 @@ footskip=0.5cm,
 \usepackage{xcolor-material}
 \usepackage{ragged2e}
 \usepackage{microtype}
+
+%\usepackage{newpxmath}
+\usepackage{mathspec} 
+\setmathfont(Digits,Latin,Greek){Gentium Plus}
 
 
 \usetikzlibrary{fit}
@@ -84,13 +88,13 @@ footskip=0.5cm,
             \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
             \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
 
-            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/qr}};
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.19}};
         \end{tikzpicture}%
     }
 
     \noindent%
     \shadowcolor{black}
-    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.14}%
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.19}%
     \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
     \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
 
@@ -131,11 +135,7 @@ footskip=0.5cm,
         %\fill[fill=conference!30!black] (0.8,0) rectangle ++(0.2,0.2);
         %\fill[fill=conference!30!black] (1.2,0) rectangle ++(0.2,0.2);
         \foreach \i in {0,1,2,3} {
-            \ifnum \i = 0
-                \def\basecolor{MaterialGreen600}
-            \else
-                \def\basecolor{conference}
-            \fi
+            \def\basecolor{conference}
             \def\color{\basecolor!30!gray!50!black}
             \ifnum \i = 0
                 \def\color{\basecolor!90!white}
@@ -187,7 +187,9 @@ footskip=0.5cm,
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Introductory Seminars%
-            %\ \texttt{MEGK9J}%
+            
+                \texttt{MEGK9J}%
+            %
             %
                 %~\\[1ex]%
                 {%
@@ -212,7 +214,8 @@ For registration and more information, please visit: {\color{conference!50!black
                 }%
             %
             %
-            %%
+            %
+                %%
             %
             };
 
@@ -256,11 +259,18 @@ For registration and more information, please visit: {\color{conference!50!black
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Opening Reception (TBD)%
-            %\ \texttt{FKYPG7}%
+            Opening Reception%
+            
+                \texttt{FKYPG7}%
             %
             %
-            %%
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                ECCL, La Table du Belvédère%
+            %
+            %
+                %%
             %
             };
 
@@ -302,7 +312,9 @@ For registration and more information, please visit: {\color{conference!50!black
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Science Fiction Authors Night%
-            %\ \texttt{M98DYT}%
+            
+                \texttt{M98DYT}%
+            %
             %
                 %~\\[1ex]%
                 {%
@@ -342,7 +354,8 @@ He lives with his wife and son between Portugal and Greece.
                 }%
             %
             %
-            %%
+            %
+                %%
             %
             };
 
@@ -352,8 +365,8 @@ He lives with his wife and son between Portugal and Greece.
             \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
             
 
-            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 18:00 };
-            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 19:30 };    
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 18:30 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 19:45 };    
             
             
                 \node[anchor=north east,rounded corners=1mm,fill=thistrack,inner sep=2mm,text width=1.7cm,align=center,xshift=1.7mm,yshift=0.1mm] 
@@ -361,6 +374,29 @@ He lives with his wife and son between Portugal and Greece.
             
 
             %
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+
+            \fill[rounded corners=1mm,gray!50!white]
+            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Space Café};
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 19:45 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 21:30 };     
 
         
 
@@ -415,11 +451,7 @@ He lives with his wife and son between Portugal and Greece.
         %\fill[fill=conference!30!black] (0.8,0) rectangle ++(0.2,0.2);
         %\fill[fill=conference!30!black] (1.2,0) rectangle ++(0.2,0.2);
         \foreach \i in {0,1,2,3} {
-            \ifnum \i = 0
-                \def\basecolor{MaterialGreen600}
-            \else
-                \def\basecolor{conference}
-            \fi
+            \def\basecolor{conference}
             \def\color{\basecolor!30!gray!50!black}
             \ifnum \i = 1
                 \def\color{\basecolor!90!white}
@@ -471,10 +503,13 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Welcome by the organizers, Conference Agenda Review%
-            %\ \texttt{MAE9VF}%
+            
+                \texttt{MAE9VF}%
             %
             %
-            %%
+            %
+            %
+                %%
             %
             };
 
@@ -515,8 +550,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Keynote Lecture 1: Pete Worden (Breakthrough Initiatives): Life in the Universe and Private Sector Space Science Initiatives%
-            %\ \texttt{TSTQQY}%
+            \textbf{Keynote:}\ %
+            Pete Worden (Breakthrough Initiatives): Life in the Universe and Private Sector Space Science Initiatives%
+            
+                \texttt{TSTQQY}%
+            %
+            %
             %
             %
             };
@@ -617,8 +656,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 3SWH7H }
-                };
+                \\\texttt{ 3SWH7H }};
 
 
                 
@@ -646,8 +684,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ C8YP9M }
-                };
+                \\\texttt{ C8YP9M }};
 
 
                 
@@ -669,15 +706,14 @@ He lives with his wife and son between Portugal and Greece.
             L.~Norder%%
             ,\@ %
         %
-            R.~Norte%%
+            R.~A.~Norte%%
                 \ (TU Delft)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ 7Z9SNY }
-                };
+                \\\texttt{ 7Z9SNY }};
 
 
                 
@@ -710,8 +746,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 8UNG3W }
-                };
+                \\\texttt{ 8UNG3W }};
 
 
                 
@@ -756,15 +791,14 @@ He lives with his wife and son between Portugal and Greece.
             %
             ,\@ %
         %
-            R.~Norte%%
+            R.~A.~Norte%%
                 \ (TU Delft)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ 3P9J7E }
-                };
+                \\\texttt{ 3P9J7E }};
 
 
                 
@@ -828,8 +862,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Keynote Lecture 2: Harry Atwater (California Institute of Technology): StarShot - from physics to spacecraft%
-            %\ \texttt{3XGUSA}%
+            \textbf{Keynote:}\ %
+            Slava Turyshev (NASA JPL): Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens%
+            
+                \texttt{GPBQGN}%
+            %
+            %
             %
             %
             };
@@ -846,29 +884,6 @@ He lives with his wife and son between Portugal and Greece.
             
 
             %
-
-        
-
-   
-
-        % bottom padding
-        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
-    \end{tikzpicture}
-    %\vspace{0mm plus 3cm}
-    \vspace{0cm plus 1cm minus 2mm}
-    %\vfill
-    
-    \begin{tikzpicture}
-
-        \node at (-1,0) {}; % Alignment node for bounding box
-
-        
-
-            \fill[rounded corners=1mm,gray!50!white]
-            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Coffe break};
-
-            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 14:20 };
-            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 14:50 };     
 
         
 
@@ -907,12 +922,11 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ CZHGML }
-                };
+                \\\texttt{ CZHGML }};
 
 
                 
-                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 14:50 };
+                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 14:20 };
                 
 
             
@@ -931,12 +945,11 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 9VT3HU }
-                };
+                \\\texttt{ 9VT3HU }};
 
 
                 
-                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 15:10 };
+                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 14:40 };
                 
 
             
@@ -960,93 +973,17 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 3YSYC3 }
-                };
+                \\\texttt{ 3YSYC3 }};
 
 
                 
-                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 15:30 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A4) at (A3.south west)
-                {\mediumfont%
-                Should Military Issues be Incorporated in Interstellar Missions?%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Ken Wisian%%
-                \ (University of Texas at Austin)%
-            %
-            %
-        %
-    }%
-    %%
-                %\\\texttt{ 3GVPLZ }
-                };
-
-
-                
-                \node[] (S) at (A4 -| 0,0) {\timelightfont\large 15:50 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A5) at (A4.south west)
-                {\mediumfont%
-                Remote control of self-replicating starships%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Alex Ellery%%
-                \ (Carleton University)%
-            %
-            %
-        %
-    }%
-    %%
-                %\\\texttt{ TA8YBE }
-                };
-
-
-                
-                \node[] (S) at (A5 -| 0,0) {\timelightfont\large 16:10 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A6) at (A5.south west)
-                {\mediumfont%
-                A top-down instructed bottom-up production method for space exploration utilising in-situ resources%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Matthias Frenzl%%
-            ,\@ %
-        %
-            A.~Shanbhag%%
-                \ (Complex Structures Research Collaboration)%
-            %
-            %
-        %
-    }%
-    %%
-                %\\\texttt{ RVC9DP }
-                };
-
-
-                
-                \node[] (S) at (A6 -| 0,0) {\timelightfont\large 16:30 };
+                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 15:00 };
                 
 
             
 
             % Draw rounded rectangle next to that
-            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A6.south west -| 1.2,1) {};
+            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A3.south west -| 1.2,1) {};
 
             % Track title
             \node[anchor=south west] at (A0.north west -| 0.8,0) {\large\boldfont\color{thistrack}%
@@ -1069,7 +1006,30 @@ He lives with his wife and son between Portugal and Greece.
         \node at (-1,0) {}; % Alignment node for bounding box
 
         
-            \definecolor{thistrack}{HTML}{633600}
+
+            \fill[rounded corners=1mm,gray!50!white]
+            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Coffee break};
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 15:20 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 15:50 };     
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+            \definecolor{thistrack}{HTML}{202020}
 
             \def\x{1.3}
             \def\width{14cm}
@@ -1077,11 +1037,13 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            1st Working Track%
-            %\ \texttt{A33MV3}%
+            \textbf{Keynote:}\ %
+            Richard A. Norte (Delft University of Technology): Propelling Interstellar Exploration: Extreme-Aspect-Ratio Metamaterials in a Post-Moore Era%
+            
+                \texttt{XTQAZ9}%
             %
             %
-            %%
+            %
             %
             };
 
@@ -1091,8 +1053,159 @@ He lives with his wife and son between Portugal and Greece.
             \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
             
 
-            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 16:50 };
-            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 17:50 };    
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 15:50 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 16:40 };    
+            
+            
+
+            %
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+
+            \definecolor{thistrack}{HTML}{A89512}
+
+            \node[style={inner sep=0, outer sep=0}] (A0) at (1.4,0) {};
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A1) at (A0.south west)
+                {\mediumfont%
+                A top-down instructed bottom-up production method for space exploration utilising in-situ resources%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Matthias Frenzl%%
+            ,\@ %
+        %
+            A.~Shanbhag%%
+                \ (Complex Structures Research Collaboration)%
+            %
+            %
+        %
+    }%
+    %%
+                \\\texttt{ RVC9DP }};
+
+
+                
+                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 16:40 };
+                
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A2) at (A1.south west)
+                {\mediumfont%
+                Remote control of self-replicating starships%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Alex Ellery%%
+                \ (Carleton University)%
+            %
+            %
+        %
+    }%
+    %%
+                \\\texttt{ TA8YBE }};
+
+
+                
+                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 17:00 };
+                
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A3) at (A2.south west)
+                {\mediumfont%
+                Should Military Issues be Incorporated in Interstellar Missions?%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Ken Wisian%%
+                \ (University of Texas at Austin)%
+            %
+            %
+        %
+    }%
+    %%
+                \\\texttt{ 3GVPLZ }};
+
+
+                
+                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 17:20 };
+                
+
+            
+
+            % Draw rounded rectangle next to that
+            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A3.south west -| 1.2,1) {};
+
+            % Track title
+            \node[anchor=south west] at (A0.north west -| 0.8,0) {\large\boldfont\color{thistrack}%
+                Session 2: Materials, ethics \& space law%
+            };
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+            \definecolor{thistrack}{HTML}{C2185B}
+
+            \def\x{1.3}
+            \def\width{14cm}
+
+            
+
+            \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
+            Shark Tank: Pitch the Space Future%
+            
+                \texttt{PQLVSH}%
+            %
+            %
+            %
+            %
+                %%
+            %
+            };
+
+            
+            % Draw rounded rectangle next to that
+            
+            \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+            
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 17:40 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 18:30 };    
             
             
 
@@ -1126,10 +1239,13 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Public Outreach Event: Next destinations for Interstellar Travel%
-            %\ \texttt{89JDYA}%
+            
+                \texttt{89JDYA}%
             %
             %
             %
+            %
+                %
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
@@ -1212,11 +1328,7 @@ He lives with his wife and son between Portugal and Greece.
         %\fill[fill=conference!30!black] (0.8,0) rectangle ++(0.2,0.2);
         %\fill[fill=conference!30!black] (1.2,0) rectangle ++(0.2,0.2);
         \foreach \i in {0,1,2,3} {
-            \ifnum \i = 0
-                \def\basecolor{MaterialGreen600}
-            \else
-                \def\basecolor{conference}
-            \fi
+            \def\basecolor{conference}
             \def\color{\basecolor!30!gray!50!black}
             \ifnum \i = 2
                 \def\color{\basecolor!90!white}
@@ -1267,8 +1379,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Keynote Lecture 3: Paolo Villoresi (University of Padova): Harnessing the light emission for extreme space optical communication%
-            %\ \texttt{38CABN}%
+            \textbf{Keynote:}\ %
+            Paolo Villoresi (University of Padova): Harnessing the light emission for extreme space optical communication%
+            
+                \texttt{38CABN}%
+            %
+            %
             %
             %
             };
@@ -1346,8 +1462,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ FUX8RQ }
-                };
+                \\\texttt{ FUX8RQ }};
 
 
                 
@@ -1383,8 +1498,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ ZHPGYJ }
-                };
+                \\\texttt{ ZHPGYJ }};
 
 
                 
@@ -1407,8 +1521,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 7CLGBP }
-                };
+                \\\texttt{ 7CLGBP }};
 
 
                 
@@ -1425,14 +1538,13 @@ He lives with his wife and son between Portugal and Greece.
     {\color{gray}\footnotesize%
         %
             Coryn Bailer-Jones%%
-                \ (Max Planck Institute for Astronomy)%
+                \ (Max Planck Institute for Astronomy, Heidelberg)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ 7AAGUZ }
-                };
+                \\\texttt{ 7AAGUZ }};
 
 
                 
@@ -1455,8 +1567,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ PNSTXR }
-                };
+                \\\texttt{ PNSTXR }};
 
 
                 
@@ -1520,8 +1631,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Keynote Lecture 4: Martin Tajmar (TU Dresden): Overview of Breakthrough Propulsion at TU Dresden%
-            %\ \texttt{AT8ECC}%
+            \textbf{Keynote:}\ %
+            Martin Tajmar (TU Dresden): Overview of Breakthrough Propulsion at TU Dresden%
+            
+                \texttt{AT8ECC}%
+            %
+            %
             %
             %
             };
@@ -1538,29 +1653,6 @@ He lives with his wife and son between Portugal and Greece.
             
 
             %
-
-        
-
-   
-
-        % bottom padding
-        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
-    \end{tikzpicture}
-    %\vspace{0mm plus 3cm}
-    \vspace{0cm plus 1cm minus 2mm}
-    %\vfill
-    
-    \begin{tikzpicture}
-
-        \node at (-1,0) {}; % Alignment node for bounding box
-
-        
-
-            \fill[rounded corners=1mm,gray!50!white]
-            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Coffee break };
-
-            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 14:20 };
-            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 14:50 };     
 
         
 
@@ -1599,41 +1691,16 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ BAN8EC }
-                };
+                \\\texttt{ BAN8EC }};
 
 
                 
-                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 14:50 };
+                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 14:20 };
                 
 
             
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A2) at (A1.south west)
-                {\mediumfont%
-                Traversable Wormholes powered by Casimir Energy with Temperature and Charge%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Remo Garattini%%
-                \ (University of Bergamo)%
-            %
-            %
-        %
-    }%
-    %%
-                %\\\texttt{ XCMLJW }
-                };
-
-
-                
-                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 15:10 };
-                
-
-            
-                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A3) at (A2.south west)
                 {\mediumfont%
                 Interstellar Precursor Missions with Advanced FEEP Ion Thrusters%
                 %
@@ -1652,53 +1719,147 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ WQWEDZ }
-                };
+                \\\texttt{ WQWEDZ }};
 
 
                 
-                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 15:30 };
+                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 14:40 };
                 
 
             
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A4) at (A3.south west)
+                (A3) at (A2.south west)
                 {\mediumfont%
-                Interstellar Precursor Missions by Combining Laser-Powered Electric Propulsion with an Oberth Maneuver%
+                Traversable Wormholes powered by Casimir Energy with Temperature and Charge%
                 %
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
-            Angelo Genovese%%
-                \ (I4IS)%
-            %
-            ,\@ %
-        %
-            N.~Buldrini%%
-                \ (FOTEC)%
+            Remo Garattini%%
+                \ (University of Bergamo)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ CLK8PX }
-                };
+                \\\texttt{ XCMLJW }};
 
 
                 
-                \node[] (S) at (A4 -| 0,0) {\timelightfont\large 15:50 };
+                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 15:00 };
                 
 
             
+
+            % Draw rounded rectangle next to that
+            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A3.south west -| 1.2,1) {};
+
+            % Track title
+            \node[anchor=south west] at (A0.north west -| 0.8,0) {\large\boldfont\color{thistrack}%
+                Session 4: Propulsion II%
+            };
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+
+            \fill[rounded corners=1mm,gray!50!white]
+            (1,-0.7) rectangle (16.2,0.7) node[pos=.5,gray!50!black] {\mediumfont Coffee break };
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 15:20 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 15:50 };     
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+            \definecolor{thistrack}{HTML}{202020}
+
+            \def\x{1.3}
+            \def\width{14cm}
+
+            
+
+            \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
+            \textbf{Keynote:}\ %
+            Harry Atwater (California Institute of Technology): StarShot - from physics to spacecraft%
+            
+                \texttt{3XGUSA}%
+            %
+            %
+            %
+            %
+            };
+
+            
+            % Draw rounded rectangle next to that
+            
+            \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+            
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 15:50 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 16:40 };    
+            
+            
+
+            %
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+
+            \definecolor{thistrack}{HTML}{3F51B5}
+
+            \node[style={inner sep=0, outer sep=0}] (A0) at (1.4,0) {};
+
+            
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A5) at (A4.south west)
+                (A1) at (A0.south west)
                 {\mediumfont%
                 Project Lyra: Opening up the space between the stars - Missions to Interstellar Objects and Nomadic Worlds%
                 %
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
-            Andreas Hein%%
+            Andreas M.~Hein%%
             ,\@ %
         %
             A.~Hibberd%%
@@ -1731,19 +1892,18 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ QVCWM9 }
-                };
+                \\\texttt{ QVCWM9 }};
 
 
                 
-                \node[] (S) at (A5 -| 0,0) {\timelightfont\large 16:10 };
+                \node[] (S) at (A1 -| 0,0) {\timeregularfont\Large 16:40 };
                 
 
             
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
-                (A6) at (A5.south west)
+                (A2) at (A1.south west)
                 {\mediumfont%
-                Evolutionary Neurocontrol for Low Thrust Solar Oberth Maneuvers to the Heliopause%
+                Streamlined Evolutionary Neurocontrol for Re-Evaluation of Low Thrust Solar Oberth Maneuvers to the Heliopause%
                 %
     \\[0ex]%
     {\color{gray}\footnotesize%
@@ -1763,18 +1923,38 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ BJ7TYA }
-                };
+                \\\texttt{ BJ7TYA }};
 
 
                 
-                \node[] (S) at (A6 -| 0,0) {\timelightfont\large 16:30 };
+                \node[] (S) at (A2 -| 0,0) {\timelightfont\large 17:00 };
+                
+
+            
+                \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
+                (A3) at (A2.south west)
+                {\mediumfont%
+                Feasibility study of reducing interstellar travel times with groups of co-operating fuel-carrying rockets%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Aapo Puhakka%%
+            %
+        %
+    }%
+    %%
+                \\\texttt{ ZWZYG9 }};
+
+
+                
+                \node[] (S) at (A3 -| 0,0) {\timelightfont\large 17:20 };
                 
 
             
 
             % Draw rounded rectangle next to that
-            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A6.south west -| 1.2,1) {};
+            \fill[rounded corners=1mm,thistrack] (A1.north west -| 1,-1) rectangle (A3.south west -| 1.2,1) {};
 
             % Track title
             \node[anchor=south west] at (A0.north west -| 0.8,0) {\large\boldfont\color{thistrack}%
@@ -1805,11 +1985,14 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            2nd Working Track%
-            %\ \texttt{FEYFU3}%
+            Working Track%
+            
+                \texttt{FEYFU3}%
             %
             %
-            %%
+            %
+            %
+                %%
             %
             };
 
@@ -1819,8 +2002,56 @@ He lives with his wife and son between Portugal and Greece.
             \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
             
 
-            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 16:50 };
-            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 17:50 };    
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 17:30 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 18:10 };    
+            
+            
+
+            %
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+            \definecolor{thistrack}{HTML}{7f2ca0}
+
+            \def\x{1.3}
+            \def\width{14cm}
+
+            
+
+            \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
+            Luxembourg City Tour%
+            
+                \texttt{8T8WDF}%
+            %
+            %
+            %
+            %
+                %%
+            %
+            };
+
+            
+            % Draw rounded rectangle next to that
+            
+            \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+            
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 18:15 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 19:45 };    
             
             
 
@@ -1851,10 +2082,17 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Gala Dinner%
-            %\ \texttt{9U8E7G}%
+            
+                \texttt{9U8E7G}%
             %
             %
-            %%
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                Junco Restaurant \& Bar%
+            %
+            %
+                %%
             %
             };
 
@@ -1924,11 +2162,7 @@ He lives with his wife and son between Portugal and Greece.
         %\fill[fill=conference!30!black] (0.8,0) rectangle ++(0.2,0.2);
         %\fill[fill=conference!30!black] (1.2,0) rectangle ++(0.2,0.2);
         \foreach \i in {0,1,2,3} {
-            \ifnum \i = 0
-                \def\basecolor{MaterialGreen600}
-            \else
-                \def\basecolor{conference}
-            \fi
+            \def\basecolor{conference}
             \def\color{\basecolor!30!gray!50!black}
             \ifnum \i = 3
                 \def\color{\basecolor!90!white}
@@ -1979,8 +2213,12 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Keynote Lecture 5: Mona Nasser (University of Plymouth): Voyaging Through the Vast — Transforming Clinical Research Methods for Interstellar Expeditions%
-            %\ \texttt{N3FEYP}%
+            \textbf{Keynote:}\ %
+            Mona Nasser (University of Plymouth): Voyaging Through the Vast — Transforming Clinical Research Methods for Interstellar Expeditions%
+            
+                \texttt{N3FEYP}%
+            %
+            %
             %
             %
             };
@@ -2046,36 +2284,19 @@ He lives with his wife and son between Portugal and Greece.
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A1) at (A0.south west)
                 {\mediumfont%
-                Biological and mechanical reproduction strategies for interstellar exploration and settlement%
+                Industrialising extrasolar asteroids to build our home among the stars%
                 %
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
-            Angelo Vermeulen%%
-                \ (TU Delft)%
-            %
-            ,\@ %
-        %
-            A.~Derm%%
-            ,\@ %
-        %
-            A.~Papic%%
-                \ (SEADS)%
-            %
-            ,\@ %
-        %
-            I.~Nikolic%%
-            ,\@ %
-        %
-            F.~Brazier%%
-                \ (TU Delft)%
+            Alex Ellery%%
+                \ (Carleton University)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ 3HDJKA }
-                };
+                \\\texttt{ BQNXFY }};
 
 
                 
@@ -2091,7 +2312,7 @@ He lives with his wife and son between Portugal and Greece.
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
-            Andreas Hein%%
+            Andreas M.~Hein%%
             ,\@ %
         %
             Y.~D.~Pech%%
@@ -2118,8 +2339,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ RQHMC7 }
-                };
+                \\\texttt{ RQHMC7 }};
 
 
                 
@@ -2151,8 +2371,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ 8MWAJE }
-                };
+                \\\texttt{ 8MWAJE }};
 
 
                 
@@ -2175,8 +2394,7 @@ He lives with his wife and son between Portugal and Greece.
         %
     }%
     %%
-                %\\\texttt{ JGCW3C }
-                };
+                \\\texttt{ JGCW3C }};
 
 
                 
@@ -2187,20 +2405,35 @@ He lives with his wife and son between Portugal and Greece.
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A5) at (A4.south west)
                 {\mediumfont%
-                Industrialising extrasolar asteroids to build our home among the stars%
+                Biological and mechanical reproduction strategies for interstellar exploration and settlement%
                 %
     \\[0ex]%
     {\color{gray}\footnotesize%
         %
-            Alex Ellery%%
-                \ (Carleton University)%
+            Angelo Vermeulen%%
+                \ (TU Delft)%
+            %
+            ,\@ %
+        %
+            A.~Derm%%
+            ,\@ %
+        %
+            A.~Papic%%
+                \ (SEADS)%
+            %
+            ,\@ %
+        %
+            I.~Nikolic%%
+            ,\@ %
+        %
+            F.~Brazier%%
+                \ (TU Delft)%
             %
             %
         %
     }%
     %%
-                %\\\texttt{ BQNXFY }
-                };
+                \\\texttt{ 3HDJKA }};
 
 
                 
@@ -2265,10 +2498,13 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Working Tracks Outbrief%
-            %\ \texttt{YRCWKL}%
+            
+                \texttt{YRCWKL}%
             %
             %
-            %%
+            %
+            %
+                %%
             %
             };
 
@@ -2333,10 +2569,13 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             Visit to Luxembourg space companies%
-            %\ \texttt{NM9WJG}%
+            
+                \texttt{NM9WJG}%
             %
             %
-            %%
+            %
+            %
+                %%
             %
             };
 
@@ -2519,13 +2758,14 @@ He lives with his wife and son between Portugal and Greece.
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
 
     \vfill
     \definecolor{thistrack}{HTML}{202020}
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 2: Harry Atwater (California Institute of Technology \\  StarShot \textemdash~from physics to spacecraft},
+        title={Keynote Lecture 2: Slava Turyshev (NASA Jet Propulsion Laboratory) \\  Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2544,8 +2784,8 @@ He lives with his wife and son between Portugal and Greece.
     ]\begin{tikzpicture}[]%
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={0.3cm 0 1cm 0}]{
-                    media/keynote2.jpg}%
+                \adjincludegraphics[height=9.3cm,clip,trim={1.5cm 0 0.5cm 0}]{
+                    media/keynote6.jpg}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -2566,15 +2806,73 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
+        The Solar Gravitational Lens (SGL) is a natural phenomenon caused by the Sun's gravitational field bending and focusing light, as predicted by general relativity. This effect provides extraordinary light amplification and angular resolution, enabling detailed imaging and spectroscopy of faint targets. A modest telescope positioned in SGL's focal region, beginning at $\sim$548 AU, could exploit it to achieve high-resolution imaging of exoplanets. This presentation discusses SGL's properties and introduces a mission concept enabled by solar sail propulsion. Sailcraft technologies are expected to allow heliocentric velocities of 20–25 AU/year within 5–7 years, enabling practical missions within two decades.
 
         {
             \small
             \color{white!20!black}
-            Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.}
+            Slava G.\ Turyshev is an astrophysicist at NASA's JPL, Caltech, and a professor in the Department of Physics and Astronomy at UCLA. His research focuses on gravitational and fundamental physics, relativistic astrophysics, gravitational waves, and planetary science. He served as the NASA Project Scientist for the CNES/ESA MICROSCOPE mission, as the Principal Investigator for the Advanced Lunar Laser Ranging Facility, the Pioneer Anomaly investigation, and NASA Innovative Advanced Concepts (NIAC) Phases I–III, and as a member of the Executive Committee of NASA’s Fundamental Physics Advisory Group (FunPAG).}
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
+
+    \vfill
+    \definecolor{thistrack}{HTML}{202020}
+
+    \begin{tcolorbox}[
+        enhanced,
+        title={Keynote Lecture 3: Richard A.\ Norte (Delft University of Technology) \\ Propelling Interstellar Exploration: Extreme-Aspect-Ratio Metamaterials in a Post-Moore Era},
+        sharp corners,
+        colbacktitle=thistrack,
+        fonttitle=\large\mediumfont,
+        boxsep=0pt,
+        boxrule=0pt,
+        left*=0pt,
+        lefttitle=4mm,
+        toptitle=4mm,
+        bottomtitle=4mm,
+        top=0pt,
+        bottom=0pt,
+        sidebyside,
+        sidebyside align=center,
+        lefthand width=6cm,
+        segmentation empty,
+    ]\begin{tikzpicture}[]%
+            \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
+                % wtf
+                \adjincludegraphics[height=9.3cm,clip,trim={1.7cm 0 1.2cm 0}]{
+                    media/keynote7.jpg}%
+            };
+
+            \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
+
+            \draw node[white,anchor=south,yshift=5mm] (DAY) at (current bounding box.south) {
+                \timeregularfont\Huge \scalebox{.8}[1.0]{%
+                    TUESDAY%
+                }%
+            };
+
+            \draw node[white,above of=DAY] (TIME)  {
+                \timeregularfont\Large 15:50 \textendash~ 16:40 
+            };
+        \end{tikzpicture}%
+        
+        \tcblower
+
+        \setlength{\parskip}{1ex}
+        
+        \vspace{1ex}
+        For the past half century, Moore's Law has steered the course of nanotechnology, propelling miniaturization in all 3 dimensions. As we approach its limits, our lab is exploring a new kind of nanotechnology that extends to large distances in the $X$ and $Y$ axes while remaining nanoscale in $Z$. The unique properties of these extreme-aspect-ratio metamaterials can advance applications such as missions that aim to reach Alpha Centauri in 20 years, instead of the 10\,000 years possible today. This talk will examine opportunities arising from the integration of advanced nanofabrication and high-power optomechanical experiments, as well as our efforts to use lightsail materails to stably levitate objects over 100\,000 times more massive than anything levitated with laser light to date.
+
+        {
+            \small
+            \color{white!20!black}
+            Richard A.\ Norte is a faculty member at TU Delft in the Netherlands. His research group develops cutting-edge nanotechnologies for quantum hardware. His work has been featured in Nature, Nature Photonics, Science, Physical Review Letters, and on the cover of Scientific American. His team has achieved significant breakthroughs in laser sail nano-manufacturing, reducing fabrication times from 15 years to a single day by integrating nanophotonics, fabrication techniques, and economic considerations of the Starshot mission.}
+
+        \vspace{2ex}
+    \end{tcolorbox}
+    \vspace{-1ex}
 
     \vfill
     \definecolor{thistrack}{HTML}{5FAB5D}
@@ -2622,7 +2920,7 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        \textbf{Highlight Talk:} Sara Seager, MIT, An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth? with Panel Q\&A
+        \textbf{Highlight Talk:} Sara Seager, MIT, An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth?
 
         {
             \small
@@ -2631,13 +2929,14 @@ He lives with his wife and son between Portugal and Greece.
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
 
     \vfill
     \definecolor{thistrack}{HTML}{202020}
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 3: Paolo Villoresi (University of Padova) \\  Harnessing the light emission for extreme space optical communication},
+        title={Keynote Lecture 4: Harry Atwater (California Institute of Technology) \\  StarShot \textemdash~from physics to spacecraft},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2656,8 +2955,8 @@ He lives with his wife and son between Portugal and Greece.
     ]\begin{tikzpicture}[]%
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={0 0 0 0}]{
-                    media/keynote3.png}%
+                \adjincludegraphics[height=9.3cm,clip,trim={0.3cm 0 1cm 0}]{
+                    media/keynote2.jpg}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -2669,7 +2968,7 @@ He lives with his wife and son between Portugal and Greece.
             };
 
             \draw node[white,above of=DAY] (TIME)  {
-                \timeregularfont\Large 09:00 \textendash~ 09:50 
+                \timeregularfont\Large 15:50 \textendash~ 16:40 
             };
         \end{tikzpicture}%
         
@@ -2678,22 +2977,23 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. Starting with the estimation of parameters such as divergence and power required, we arrive at the dimensioning of the transmission system. This is achieved with phased-array grating couplers. Some implementation models for these devices are presented. Finally, the optimal error-correction code for this type of communication has been worked out and will be briefly presented. By drawing inspiration from the methods of Quantum Communication in space, the preparation of the pulses required for communication from the sail can also provide significant metrological information for studying the kinematics of solar sails.
+        Over the last several years, significant progress has been made on the understanding of the requirements for design of laser-driven lightsails suitable for interstellar missions. Nanophotonic design principles can enable self-stabilizing optical manipulation, levitation and propulsion of ultralight microscopic and macroscopic-sized (i.e., micron, mm, cm, or even meter-scale) metasurface lightsails via radiation pressure from a high power density pump laser source. I will discuss new simulations and measurements to test the stringent criteria for metasurface lightsail design, dynamical and opto-mechanical stability, and thermal management.
 
         {
             \small
             \color{white!20!black}
-            Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in Space using orbiting retroreflectors, adopting polarization and temporal modes. His past research topics include the Atomic Physics in the attosecond domain, the generation of high-order harmonics, the multiphoton ionization and the ultrafast optics in extreme ultraviolet and X-rays domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for Space and ground networks.}
+            Harry Atwater is the Otis Booth Leadership Chair of the Division of Engineering and Applied Science, and the Howard Hughes Professor of Applied Physics and Materials Science at the California Institute of Technology. Atwater's scientific effort focuses on nanophotonic light-matter interactions. He was an early pioneer in nanophotonics and plasmonics and gave a name to the field of plasmonics in 2001. Atwater's work spans fundamental nanophotonic phenomena and applications, including active wavefront shaping of light using metasurfaces, optical propulsion of lightsails, quantum and 2D nanophotonics as well as solar energy conversion, on earth and in space.}
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
 
     \vfill
     \definecolor{thistrack}{HTML}{202020}
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 4: Martin Tajmar (TU Dresden) \\  Overview of Breakthrough Propulsion at TU Dresden},
+        title={Keynote Lecture 5: Martin Tajmar (TU Dresden) \\  Overview of Breakthrough Propulsion at TU Dresden},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2743,13 +3043,71 @@ He lives with his wife and son between Portugal and Greece.
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
 
     \vfill
     \definecolor{thistrack}{HTML}{202020}
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 5: Mona Nasser (University of Plymouth) \\  Voyaging Through the Vast \textemdash~Transforming Clinical Research Methods for Interstellar Expeditions},
+        title={Keynote Lecture 6: Paolo Villoresi (University of Padova) \\  Harnessing the light emission for extreme space optical communication},
+        sharp corners,
+        colbacktitle=thistrack,
+        fonttitle=\large\mediumfont,
+        boxsep=0pt,
+        boxrule=0pt,
+        left*=0pt,
+        lefttitle=4mm,
+        toptitle=4mm,
+        bottomtitle=4mm,
+        top=0pt,
+        bottom=0pt,
+        sidebyside,
+        sidebyside align=center,
+        lefthand width=6cm,
+        segmentation empty,
+    ]\begin{tikzpicture}[]%
+            \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
+                % wtf
+                \adjincludegraphics[height=9.3cm,clip,trim={0 0 0 0}]{
+                    media/keynote3.png}%
+            };
+
+            \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
+
+            \draw node[white,anchor=south,yshift=5mm] (DAY) at (current bounding box.south) {
+                \timeregularfont\Huge \scalebox{.8}[1.0]{%
+                    WEDNESDAY%
+                }%
+            };
+
+            \draw node[white,above of=DAY] (TIME)  {
+                \timeregularfont\Large 09:00 \textendash~ 09:50 
+            };
+        \end{tikzpicture}%
+        
+        \tcblower
+
+        \setlength{\parskip}{1ex}
+        
+        \vspace{1ex}
+        We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
+
+        {
+            \small
+            \color{white!20!black}
+            Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.}
+
+        \vspace{2ex}
+    \end{tcolorbox}
+    \vspace{-1ex}
+
+    \vfill
+    \definecolor{thistrack}{HTML}{202020}
+
+    \begin{tcolorbox}[
+        enhanced,
+        title={Keynote Lecture 7: Mona Nasser (University of Plymouth) \\  Voyaging Through the Vast \textemdash~Transforming Clinical Research Methods for Interstellar Expeditions},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2799,6 +3157,7 @@ He lives with his wife and son between Portugal and Greece.
 
         \vspace{2ex}
     \end{tcolorbox}
+    \vspace{-1ex}
 
 
 % Sponsor Logos

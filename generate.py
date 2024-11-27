@@ -153,6 +153,17 @@ for talk in json_aux['talks']:
         start_short = start.astimezone(timezone).strftime("%H:%M")
         end_short = end.astimezone(timezone).strftime("%H:%M")
 
+        break_event = {
+            "break": True,
+            "title": name,
+            "track": "Break",
+            "start": start_short,
+            "end": end_short,
+            "start_datetime": start,
+            "end_datetime": end,
+            "code": ""
+        }
+
         # Shove break into the schedule, right before the first session whose start time is after the end of the break
         for day in days:
             date = day['date_datetime']
@@ -161,26 +172,22 @@ for talk in json_aux['talks']:
             if date.date() != start.date():
                 continue
 
+            added = False
             for room in day['rooms'].values():
+
                 for event in room:
-                    # print(f"Comparing {event['start_datetime']} to {start}")
 
                     event_start = event['start_datetime']
 
                     if event_start > start:
-                        break_event = {
-                            "break": True,
-                            "title": name,
-                            "track": "Break",
-                            "start": start_short,
-                            "end": end_short,
-                            "start_datetime": start,
-                            "end_datetime": end,
-                            "code": ""
-                        }
                         room.insert(room.index(event), break_event)
+                        added = True
 
                         break
+                
+                if not added:
+                    # If we reach this point, it means that the break is the last event of the day
+                    room.append(break_event)
 
 # Apply overrides
 try:
@@ -377,7 +384,7 @@ env.filters['latexize'] = latexize
 template = env.get_template('schedule.tex.jinja')
 
 with open('schedule.tex', 'w') as f:
-    f.write(template.render(json=json, days=days, featured=featured))
+    f.write(template.render(json=json, days=days, featured=featured, overrides=overrides))
 
 log.info("Generated schedule stored at schedule.tex")
 
