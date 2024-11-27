@@ -83,6 +83,8 @@ featured:
     image: keynote6.jpg
     lefttrim: 1.5cm
     righttrim: 0.5cm
+    # image: keynote6.png
+    # lefttrim: 1cm
     persons:
       - biography: Slava G.\ Turyshev is an astrophysicist at NASA's JPL, Caltech, and a professor in the Department of Physics and Astronomy at UCLA. His research focuses on gravitational and fundamental physics, relativistic astrophysics, gravitational waves, and planetary science. He served as the NASA Project Scientist for the CNES/ESA MICROSCOPE mission, as the Principal Investigator for the Advanced Lunar Laser Ranging Facility, the Pioneer Anomaly investigation, and NASA Innovative Advanced Concepts (NIAC) Phases I–III, and as a member of the Executive Committee of NASA’s Fundamental Physics Advisory Group (FunPAG).
   XTQAZ9: # R.A. Norte
@@ -98,6 +100,9 @@ featured:
     image: public2.jpg
     lefttrim: 3.4cm
     righttrim: 5.6cm
+    registration: 
+      title: FREE REGISTRATION REQUIRED
+      text: "\\footnotesize\\url{https://feis2024.uni.lu/register/seager}"
   3XGUSA: # Harry Atwater
     title: "Keynote Lecture 4: Harry Atwater (California Institute of Technology) \\\\  StarShot \\textemdash~from physics to spacecraft"
     image: keynote2.jpg

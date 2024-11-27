@@ -38,7 +38,7 @@ footskip=0.5cm,
 
 %\usepackage{newpxmath}
 \usepackage{mathspec} 
-\setmathfont(Digits,Latin,Greek){Gentium Plus}
+\setmathfont(Latin,Greek){Gentium Plus}
 
 
 \usetikzlibrary{fit}
@@ -448,6 +448,33 @@ footskip=0.5cm,
             \color{white!20!black}
             {{{ event.persons[0].biography | latexize -}}}
         }
+
+        {{% if event.registration %}}
+        \begin{tcolorbox}[
+            % round corners,
+            frame hidden,
+            sidebyside,
+            bicolor,
+            colback=thistrack!70!black,
+            colbacklower=thistrack!90!black,
+            %#sharp corners=downhill,
+            size=title,
+            boxrule=0pt,
+            lefthand ratio=0.6,
+            sidebyside align=center,
+            halign=center,
+            halign lower=flush center,
+            % title={  },
+        ]
+            \color{white}
+            \textbf{%
+                {{{ event.registration.title -}}}%
+            }
+            \tcblower
+            \color{white}
+            {{{ event.registration.text }}}
+        \end{tcolorbox}
+        {{% endif %}}
 
         \vspace{2ex}
     \end{tcolorbox}
