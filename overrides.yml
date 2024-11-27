@@ -1,4 +1,4 @@
-debug: true
+debug: false
 talks:
   MEGK9J:
     abstract: |
@@ -44,6 +44,29 @@ talks:
       With almost 2 million books sold, \textbf{Joshua T. Calvert} is at the forefront of current international science fiction. His German novel “Singularity”, published by Fischer-Tor, won the prestigious “Seraph” fantasy literature prize for best novel in 2022. The English translation of his Kindle hit “The Fossil” won second place in the 2021 American “Reader’s Favorite Awards” for best novel. His books are available in English, Spanish and German. % As a hybrid author, his novels are indie-published and published by well-known publishers.
       He lives with his wife and son between Portugal and Greece. 
       \end{minipage}
+
+      \begin{tcolorbox}[
+            frame hidden,
+            sidebyside,
+            bicolor,
+            colback=thistrack!70!black,
+            colbacklower=thistrack!90!black,
+            size=title,
+            boxrule=0pt,
+            lefthand ratio=0.6,
+            sidebyside align=center,
+            halign=center,
+            halign lower=flush center,
+            % title={  },
+        ]
+            \color{white}
+            \textbf{%
+                FREE REGISTRATION REQUIRED%
+            }
+            \tcblower
+            \color{white}
+            \url{https://feis2024.uni.lu/register/authors}
+        \end{tcolorbox}
     persons: []
     tagleft: OPEN TO PUBLIC
   3YSYC3:
