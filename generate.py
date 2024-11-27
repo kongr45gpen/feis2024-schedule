@@ -224,24 +224,35 @@ for day in days:
                         person['affiliation'] = overrides['affiliations'][person['affiliation']]
 
 # Create xlsx files for OnTime
-workbook = xlsxwriter.Workbook(f"output/ontime_{datetime.now()}.xlsx")
+workbook = xlsxwriter.Workbook(f"output/ontime_{datetime.now()}.xlsx".replace(":", "-"))
 debug_json = {}
 for day in days:
     for room_name, room in day['rooms'].items():
         worksheet = workbook.add_worksheet(f'{day["date"]} {day["date_datetime"].strftime("%A")} {room_name}'[0:31])
         worksheet.write(0, 0, "time start")
         worksheet.write(0, 1, "time end")
-        worksheet.write(0, 2, "title")
-        worksheet.write(0, 3, "Speakers")
-        worksheet.write(0, 4, "Track")
-        worksheet.write(0, 5, "Code")
-        worksheet.write(0, 6, "colour")
-        worksheet.write(0, 7, "avatar")
-        worksheet.write(0, 8, "notes")
+        worksheet.write(0, 2, "time end actual")
+        worksheet.write(0, 3, "title")
+        worksheet.write(0, 4, "Speakers")
+        worksheet.write(0, 5, "Track")
+        worksheet.write(0, 6, "Code")
+        worksheet.write(0, 7, "colour")
+        worksheet.write(0, 8, "avatar")
+        worksheet.write(0, 9, "notes")
+        worksheet.write(0, 10, "address")
+        worksheet.write(0, 11, "public")
 
         for i, event in enumerate(room):
             row = []
             row.append(event['start'])
+            # The supposed end time should be around 75% of the actual end time to allow for questions and Q&A 
+            if event['track'] == "Keynote":
+                qa = timedelta(minutes=10)
+            elif event['track'] and event['track'].startswith("Session"):
+                qa = timedelta(minutes=5)
+            else:
+                qa = timedelta(minutes=0)
+            row.append((event['end_datetime'] - qa).strftime("%H:%M"))
             row.append(event['end'])
             row.append(event['title'])
             if 'persons' in event:
@@ -280,6 +291,28 @@ for day in days:
                 log.debug(f"Technical details for {event['title']}: `{technical}`")
             
             row.append(technical)
+
+            # Speaker way of addressing
+            if 'persons' in event and len(event['persons']) > 0:
+                code = event['persons'][0]['code']
+                address = event['persons'][0]['public_name']
+                if code in speaker_answers:
+                    their_answers = speaker_answers[code]
+                    if 'Gender' in their_answers:
+                        address += f", {their_answers['Gender']}"
+                    if 'Affiliation' in their_answers:
+                        address += f" ({their_answers['Affiliation']})"
+                    if 'Title' in their_answers:
+                        address = f"{their_answers['Title']} {address}"
+                    else:
+                        address = f". {address}"
+                row.append(address)
+                log.debug(f" ↳ Address: {address}")
+            else:
+                row.append("")
+
+            row.append("1")
+
 
             for j, cell in enumerate(row):
                 worksheet.write(i + 1, j, cell)
