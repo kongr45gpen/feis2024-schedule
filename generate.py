@@ -2,6 +2,7 @@ import argparse
 import requests
 import logging
 from rich import print
+from rich.console import Console
 from rich.logging import RichHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, time, date, timedelta
@@ -15,18 +16,22 @@ import os
 import json
 from dotenv import load_dotenv
 
+parser = argparse.ArgumentParser(description='Generate a LaTeX schedule from a frab-compatible .json file')
+parser.add_argument('-r', '--refresh', action='store_true', help='Refresh the schedule online instead of using files')
+parser.add_argument('-p', '--presentation', action='store_true', help='Download uploaded presentation files')
+parser.add_argument('-d', '--debug', action='store_true', help='Enable debug logging')
+args = parser.parse_args()
+
 FORMAT = "%(message)s"
 logging.basicConfig(
-    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+    level="NOTSET" if args.debug else "INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
 )
 
 log = logging.getLogger("rich")
 
-parser = argparse.ArgumentParser(description='Generate a LaTeX schedule from a frab-compatible .json file')
-parser.add_argument('-r', '--refresh', action='store_true', help='Refresh the schedule online instead of using files')
-
-args = parser.parse_args()
 load_dotenv()
+
+console = Console()
 
 log.info("Welcome to the pretalx rich handler!")
 
@@ -274,7 +279,7 @@ for day in days:
                 for attribute in ['notes', 'internal_notes']:
                     if attribute in submission and submission[attribute] and submission[attribute] != "":
                         technical += f"{submission[attribute]}. "
-            elif event['code']:
+            elif event['code'] and not event['code'].startswith("BRK-"):
                 log.warning(f"Submission {event['code']} not found in submission details")
 
             # Get question answers (from speakers) from csv file
@@ -348,6 +353,71 @@ for code, override in overrides['featured'].items():
     this_event = this_event | override
 
     featured.append(this_event)
+
+# Download presentation files
+if args.presentation:
+    for day in days:
+        for room in day['rooms'].values():
+            for event in room:
+                if 'color' in event and 'track' in event:
+                    track = str(event['track'])[:30]
+                    console.print(f'{track: >30}', style=event['color'], end=' ')
+                else:
+                    track = ""
+                    console.print(f'{track: >30}', style='', end=' ')
+                
+                title = event['title'][:40]
+                console.print(f'{title: <40}', end=' ')
+
+                # Try to find if they have a laptop
+                if 'answers' in event and 'Are you using your own laptop?' in event['answers']:
+                    if event['answers']['Are you using your own laptop?'].startswith("I would like"):
+                        console.print(" [ OUR ]", end=' ')
+                    elif event['answers']['Are you using your own laptop?'].startswith("I will bring"):
+                        console.print(" [yellow][THEIR][/yellow]", end=' ')
+                    else:
+                        console.print(" [  ?  ]", end=' ')
+                else:
+                    console.print(" [  ?  ]", end=' ')
+
+                # Try to find if this event has a presentation
+                if 'answers' in event and 'Presentation File' in event['answers']:
+                    url = "https://pretalx.electroserv.eu" + event['answers']['Presentation File']
+
+                    filename = url.split('/')[-1]
+                    try:
+                        extension = filename.split('.')[1].upper()
+                    except Exception as e:
+                        extension = ""
+                    
+                    # If the filename exists, keep the presentation. If it doesn't, download it
+                    if not os.path.exists(f"presentations/{filename}"):
+                        log.debug(f"Downloading {url} ...")
+                        try:
+                            r = requests.get(url, headers = {
+                                'Authorization': f'Token {os.getenv("PRETALX_API_KEY")}'
+                            })
+                            r.raise_for_status()
+                        except Exception as e:
+                            log.error(f"Failed to download {url}: {e}")
+                            continue
+                        with open(f"presentations/{filename}", 'wb') as f:
+                            f.write(r.content)
+                        log.debug("Download complete")
+                        console.print(f" [blue]downloaded [bold]new {extension}[/bold] presentation named {filename}[/blue]")
+                    else:
+                        console.print(f" [green]has [bold]{extension}[/bold] presentation named {filename}[/green]")
+
+                elif 'answers' in event and 'Presentation File (link)' in event['answers']:
+                    url = event['answers']['Presentation File (link)']
+                    
+                    console.print(f" has [cyan]URL presentation at:[/cyan] {url}")
+
+                    # Create a shortcut file that contains the URL...
+                    with open(f"presentations/{event['title']}.url", 'w') as f:
+                        f.write("[InternetShortcut]\nURL=" + url)
+                else:
+                    console.print(" has [bold red]no presentation[/bold red]")
 
 # Combine tracks
 for day in days:

@@ -1,6 +1,7 @@
 *:Zone.Identifier
 __pycache__
 .env
+/presentations
 /output
 feis2024-speaker-questions.csv
 feis2024-submission-questions.csv
