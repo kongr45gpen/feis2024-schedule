@@ -159,15 +159,8 @@ affiliations:
   Institute for Futures Studies, Stockholm: Institute for Future Studies
   Institut für Textiltechnik der RWTH Aachen University: RWTH Aachen University
 featured:
-  TSTQQY: # Pete Worden
-    title: "Keynote Lecture 1: Pete Worden (Breakthrough Initiatives) \\\\ Life in the Universe and Private Sector Space Science Initiatives"
-    description: Dr.~Worden will present Breakthrough Listen, looking for signs of extraterrestrial technology; Breakthrough Watch, looking for nearby exoplanets; Breakthrough Starshot, engineering a light-driven probe for Alpha Centauri; and other space science programs to find life beyond earth and explore the cosmos.
-    persons:
-      - biography: Dr. S.~``Pete''' Worden, (Brig Gen, USAF, Ret, PhD) is Chairman of the Breakthrough Prize Foundation and Executive Director of the foundation's ``Breakthrough Initiatives''. He holds a Bachelor of Science degree in Physics and Astronomy from the University of Michigan and a PhD in Astronomy from the University of Arizona. After several US Air Force positions and a research professorship in astronomy at the University of Arizona, Dr. Worden was Director of NASA's Ames Research Center until retiring on March 31, 2015. From 2017 to the present, Brigadier General Worden is an Advisor to the Luxembourg Space Agency and was appointed as a Knight-Commander of the Order of Merit of the Grand Duchy of Luxembourg in 2018 for his space services.
-    image: keynote1.jpg
-    righttrim: 1cm
   GPBQGN: # Slava Turyshev
-    title: "Keynote Lecture 2: Slava Turyshev (NASA Jet Propulsion Laboratory) \\\\  Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens"
+    title: "Keynote Lecture 1: Slava Turyshev (NASA Jet Propulsion Laboratory) \\\\  Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens"
     description: The Solar Gravitational Lens (SGL) is a natural phenomenon caused by the Sun's gravitational field bending and focusing light, as predicted by general relativity. This effect provides extraordinary light amplification and angular resolution, enabling detailed imaging and spectroscopy of faint targets. A modest telescope positioned in SGL's focal region, beginning at $\sim$548 AU, could exploit it to achieve high-resolution imaging of exoplanets. This presentation discusses SGL's properties and introduces a mission concept enabled by solar sail propulsion. Sailcraft technologies are expected to allow heliocentric velocities of 20–25 AU/year within 5–7 years, enabling practical missions within two decades.
     #Current materials can allow sailcraft to achieve heliocentric velocities of up to 7 AU/year, expected to increase to 20–25 AU/year within 5–7 years, enabling practical missions within two decades.
     image: keynote6.jpg
@@ -177,6 +170,14 @@ featured:
     # lefttrim: 1cm
     persons:
       - biography: Slava G.\ Turyshev is an astrophysicist at NASA's JPL, Caltech, and a professor in the Department of Physics and Astronomy at UCLA. His research focuses on gravitational and fundamental physics, relativistic astrophysics, gravitational waves, and planetary science. He served as the NASA Project Scientist for the CNES/ESA MICROSCOPE mission, as the Principal Investigator for the Advanced Lunar Laser Ranging Facility, the Pioneer Anomaly investigation, and NASA Innovative Advanced Concepts (NIAC) Phases I–III, and as a member of the Executive Committee of NASA’s Fundamental Physics Advisory Group (FunPAG).
+  AT8ECC: # Martin Tajmar
+    title: "Keynote Lecture 2: Martin Tajmar (TU Dresden) \\\\  Overview of Breakthrough Propulsion at TU Dresden"
+    description: Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
+    persons:
+      - biography: Prof. Dr. Martin Tajmar studied physics, space studies and electrical engineering, graduating with a PhD from TU Wien. After research stays at NASA JPL and ESA-ESTEC, he joined the Austrian Institute of Technology where he was head of the business unit ``Space Propulsion & Advanced Concepts''. After being appointed as associate professor at KAIST, he moved to TU Dresden as full professor and head of the chair of space systems in 2012, where he later became the director of the Institute of Aerospace Engineering.
+    image: keynote4.jpg
+    lefttrim: 2.5cm
+    righttrim: 2cm
   XTQAZ9: # R.A. Norte
     title: "Keynote Lecture 3: Richard A.\\ Norte (Delft University of Technology) \\\\ Propelling Interstellar Exploration: Extreme-Aspect-Ratio Metamaterials in a Post-Moore Era"
     description: "For the past half century, Moore's Law has steered the course of nanotechnology, propelling miniaturization in all 3 dimensions. As we approach its limits, our lab is exploring a new kind of nanotechnology that extends to large distances in the $X$ and $Y$ axes while remaining nanoscale in $Z$. The unique properties of these extreme-aspect-ratio metamaterials can advance applications such as missions that aim to reach Alpha Centauri in 20 years, instead of the 10\\,000 years possible today. This talk will examine opportunities arising from the integration of advanced nanofabrication and high-power optomechanical experiments, as well as our efforts to use lightsail materails to stably levitate objects over 100\\,000 times more massive than anything levitated with laser light to date."
@@ -202,14 +203,13 @@ featured:
     description: We present the study of the communication system designed to transmit data from an ultralight sail on an interplanetary mission. By estimating parameters such as divergence and power required, we arrive at the dimensioning of the transmitter, achieved with phased-array grating couplers. Some implementation models and the optimal error-correction code for these devices are presented. By drawing inspiration from Quantum Communication in space, the preparation of the pulses can also provide significant metrological information for studying the kinematics of solar sails.
     persons:
       - biography: Paolo Villoresi is a Professor of Physics and Director of the Padua Quantum Technologies Research Center at the University of Padova. He realized the first single photon exchange with a satellite and demonstrated the first Quantum Communication in space using orbiting retroreflectors. His past research topics include Atomic Physics in the attosecond domain, the generation of high-order harmonics, multiphoton ionization, and ultrafast optics in extreme UV and X-ray domains. He has deposited 14 industrial patents and patent applications. He is the President of the Strategic Technical Committee of Veneto Sviluppo and founder of ThinkQuantum, a spinoff of University of Padova introducing advanced QKD technologies for space and ground networks.
-  AT8ECC: # Martin Tajmar
-    title: "Keynote Lecture 5: Martin Tajmar (TU Dresden) \\\\  Overview of Breakthrough Propulsion at TU Dresden"
-    description: Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
+  TSTQQY: # Pete Worden
+    title: "Keynote Lecture 5: Pete Worden (Breakthrough Initiatives) \\\\ Life in the Universe and Private Sector Space Science Initiatives"
+    description: Dr.~Worden will present Breakthrough Listen, looking for signs of extraterrestrial technology; Breakthrough Watch, looking for nearby exoplanets; Breakthrough Starshot, engineering a light-driven probe for Alpha Centauri; and other space science programs to find life beyond earth and explore the cosmos.
     persons:
-      - biography: Prof. Dr. Martin Tajmar studied physics, space studies and electrical engineering, graduating with a PhD from TU Wien. After research stays at NASA JPL and ESA-ESTEC, he joined the Austrian Institute of Technology where he was head of the business unit ``Space Propulsion & Advanced Concepts''. After being appointed as associate professor at KAIST, he moved to TU Dresden as full professor and head of the chair of space systems in 2012, where he later became the director of the Institute of Aerospace Engineering.
-    image: keynote4.jpg
-    lefttrim: 2.5cm
-    righttrim: 2cm
+      - biography: Dr. S.~``Pete''' Worden, (Brig Gen, USAF, Ret, PhD) is Chairman of the Breakthrough Prize Foundation and Executive Director of the foundation's ``Breakthrough Initiatives''. He holds a Bachelor of Science degree in Physics and Astronomy from the University of Michigan and a PhD in Astronomy from the University of Arizona. After several US Air Force positions and a research professorship in astronomy at the University of Arizona, Dr. Worden was Director of NASA's Ames Research Center until retiring on March 31, 2015. From 2017 to the present, Brigadier General Worden is an Advisor to the Luxembourg Space Agency and was appointed as a Knight-Commander of the Order of Merit of the Grand Duchy of Luxembourg in 2018 for his space services.
+    image: keynote1.jpg
+    righttrim: 1cm
   3XGUSA: # Harry Atwater
     title: "Keynote Lecture 6: Harry Atwater (California Institute of Technology) \\\\  StarShot \\textemdash~from physics to spacecraft"
     image: keynote2.jpg

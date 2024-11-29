@@ -91,13 +91,13 @@ footskip=0.7cm,
             \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
             \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
 
-            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.24}};
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.25}};
         \end{tikzpicture}%
     }
 
     \noindent%
     \shadowcolor{black}
-    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.24}%
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.25}%
     \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
     \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
 
@@ -570,7 +570,7 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
-            Pete Worden (Breakthrough Initiatives): Life in the Universe and Private Sector Space Science Initiatives%
+            Slava Turyshev (NASA JPL): Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens%
             %
             %
             %
@@ -880,7 +880,7 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
-            Slava Turyshev (NASA JPL): Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens%
+            Martin Tajmar (TU Dresden): Overview of Breakthrough Propulsion at TU Dresden%
             %
             %
             %
@@ -1657,7 +1657,7 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
             \textbf{Keynote:}\ %
-            Martin Tajmar (TU Dresden): Overview of Breakthrough Propulsion at TU Dresden%
+            Pete Worden (Breakthrough Initiatives): Life in the Universe and Private Sector Space Science Initiatives%
             %
             %
             %
@@ -2792,66 +2792,7 @@ He lives with his wife and son between Portugal and Greece.
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 1: Pete Worden (Breakthrough Initiatives) \\ Life in the Universe and Private Sector Space Science Initiatives},
-        sharp corners,
-        colbacktitle=thistrack,
-        fonttitle=\large\mediumfont,
-        boxsep=0pt,
-        boxrule=0pt,
-        left*=0pt,
-        lefttitle=4mm,
-        toptitle=4mm,
-        bottomtitle=4mm,
-        top=0pt,
-        bottom=0pt,
-        sidebyside,
-        sidebyside align=center,
-        lefthand width=6cm,
-        segmentation empty,
-    ]\begin{tikzpicture}[]%
-            \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
-                % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={0 0 1cm 0}]{
-                    media/keynote1.jpg}%
-            };
-
-            \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
-
-            \draw node[white,anchor=south,yshift=5mm] (DAY) at (current bounding box.south) {
-                \timeregularfont\Huge \scalebox{.8}[1.0]{%
-                    TUESDAY%
-                }%
-            };
-
-            \draw node[white,above of=DAY] (TIME)  {
-                \timeregularfont\Large 09:00 \textendash~ 09:50 
-            };
-        \end{tikzpicture}%
-        
-        \tcblower
-
-        \setlength{\parskip}{1ex}
-        
-        \vspace{1ex}
-        Dr.~Worden will present Breakthrough Listen, looking for signs of extraterrestrial technology; Breakthrough Watch, looking for nearby exoplanets; Breakthrough Starshot, engineering a light-driven probe for Alpha Centauri; and other space science programs to find life beyond earth and explore the cosmos.
-
-        {
-            \small
-            \color{white!20!black}
-            Dr.~S.~``Pete''' Worden, (Brig Gen, USAF, Ret, PhD) is Chairman of the Breakthrough Prize Foundation and Executive Director of the foundation's ``Breakthrough Initiatives''. He holds a Bachelor of Science degree in Physics and Astronomy from the University of Michigan and a PhD in Astronomy from the University of Arizona. After several US Air Force positions and a research professorship in astronomy at the University of Arizona, Dr.~Worden was Director of NASA's Ames Research Center until retiring on March 31, 2015. From 2017 to the present, Brigadier General Worden is an Advisor to the Luxembourg Space Agency and was appointed as a Knight-Commander of the Order of Merit of the Grand Duchy of Luxembourg in 2018 for his space services.}
-
-        
-
-        \vspace{2ex}
-    \end{tcolorbox}
-    \vspace{-1ex}
-
-    \vfill
-    \definecolor{thistrack}{HTML}{202020}
-
-    \begin{tcolorbox}[
-        enhanced,
-        title={Keynote Lecture 2: Slava Turyshev (NASA Jet Propulsion Laboratory) \\  Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens},
+        title={Keynote Lecture 1: Slava Turyshev (NASA Jet Propulsion Laboratory) \\  Multipixel Imaging and Spectroscopy of Exoplanets — A Search for Life with the Solar Gravitational Lens},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2883,7 +2824,7 @@ He lives with his wife and son between Portugal and Greece.
             };
 
             \draw node[white,above of=DAY] (TIME)  {
-                \timeregularfont\Large 13:30 \textendash~ 14:20 
+                \timeregularfont\Large 09:00 \textendash~ 09:50 
             };
         \end{tikzpicture}%
         
@@ -2898,6 +2839,65 @@ He lives with his wife and son between Portugal and Greece.
             \small
             \color{white!20!black}
             Slava G.\ Turyshev is an astrophysicist at NASA's JPL, Caltech, and a professor in the Department of Physics and Astronomy at UCLA. His research focuses on gravitational and fundamental physics, relativistic astrophysics, gravitational waves, and planetary science. He served as the NASA Project Scientist for the CNES/ESA MICROSCOPE mission, as the Principal Investigator for the Advanced Lunar Laser Ranging Facility, the Pioneer Anomaly investigation, and NASA Innovative Advanced Concepts (NIAC) Phases I–III, and as a member of the Executive Committee of NASA’s Fundamental Physics Advisory Group (FunPAG).}
+
+        
+
+        \vspace{2ex}
+    \end{tcolorbox}
+    \vspace{-1ex}
+
+    \vfill
+    \definecolor{thistrack}{HTML}{202020}
+
+    \begin{tcolorbox}[
+        enhanced,
+        title={Keynote Lecture 2: Martin Tajmar (TU Dresden) \\  Overview of Breakthrough Propulsion at TU Dresden},
+        sharp corners,
+        colbacktitle=thistrack,
+        fonttitle=\large\mediumfont,
+        boxsep=0pt,
+        boxrule=0pt,
+        left*=0pt,
+        lefttitle=4mm,
+        toptitle=4mm,
+        bottomtitle=4mm,
+        top=0pt,
+        bottom=0pt,
+        sidebyside,
+        sidebyside align=center,
+        lefthand width=6cm,
+        segmentation empty,
+    ]\begin{tikzpicture}[]%
+            \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
+                % wtf
+                \adjincludegraphics[height=9.3cm,clip,trim={2.5cm 0 2cm 0}]{
+                    media/keynote4.jpg}%
+            };
+
+            \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
+
+            \draw node[white,anchor=south,yshift=5mm] (DAY) at (current bounding box.south) {
+                \timeregularfont\Huge \scalebox{.8}[1.0]{%
+                    TUESDAY%
+                }%
+            };
+
+            \draw node[white,above of=DAY] (TIME)  {
+                \timeregularfont\Large 13:30 \textendash~ 14:20 
+            };
+        \end{tikzpicture}%
+        
+        \tcblower
+
+        \setlength{\parskip}{1ex}
+        
+        \vspace{1ex}
+        Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
+
+        {
+            \small
+            \color{white!20!black}
+            Prof.~Dr.~Martin Tajmar studied physics, space studies and electrical engineering, graduating with a PhD from TU Wien. After research stays at NASA JPL and ESA-ESTEC, he joined the Austrian Institute of Technology where he was head of the business unit ``Space Propulsion \& Advanced Concepts''. After being appointed as associate professor at KAIST, he moved to TU Dresden as full professor and head of the chair of space systems in 2012, where he later became the director of the Institute of Aerospace Engineering.}
 
         
 
@@ -3112,7 +3112,7 @@ He lives with his wife and son between Portugal and Greece.
 
     \begin{tcolorbox}[
         enhanced,
-        title={Keynote Lecture 5: Martin Tajmar (TU Dresden) \\  Overview of Breakthrough Propulsion at TU Dresden},
+        title={Keynote Lecture 5: Pete Worden (Breakthrough Initiatives) \\ Life in the Universe and Private Sector Space Science Initiatives},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -3131,8 +3131,8 @@ He lives with his wife and son between Portugal and Greece.
     ]\begin{tikzpicture}[]%
             \draw node[outer sep=0,inner sep=0,anchor=north west] at (0,0) {%
                 % wtf
-                \adjincludegraphics[height=9.3cm,clip,trim={2.5cm 0 2cm 0}]{
-                    media/keynote4.jpg}%
+                \adjincludegraphics[height=9.3cm,clip,trim={0 0 1cm 0}]{
+                    media/keynote1.jpg}%
             };
 
             \fill[opacity=.7,black!50!thistrack] (0,-6.5) rectangle (current bounding box.south east);
@@ -3153,12 +3153,12 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        Human exploration to the stars will require a breakthrough in propulsion. We therefore decided to establish a dedicated breakthrough propulsion group within our institute to investigate and test new ideas for propellantless propulsion. Our main focus is developing a cutting-edge suite of measurement devices including thrust balances with (sub) nano-Newton resolution and a superconducting levitation thrust stand as well as a nano-gram weight balance. Several tests were carried out to test claims of revolutionary propulsion devices such as the EMDrive that could be traced back to setup-related artefacts. Here we review our program goals and developments and show some examples of what we tested so far as well as what we want to do in the future.
+        Dr.~Worden will present Breakthrough Listen, looking for signs of extraterrestrial technology; Breakthrough Watch, looking for nearby exoplanets; Breakthrough Starshot, engineering a light-driven probe for Alpha Centauri; and other space science programs to find life beyond earth and explore the cosmos.
 
         {
             \small
             \color{white!20!black}
-            Prof.~Dr.~Martin Tajmar studied physics, space studies and electrical engineering, graduating with a PhD from TU Wien. After research stays at NASA JPL and ESA-ESTEC, he joined the Austrian Institute of Technology where he was head of the business unit ``Space Propulsion \& Advanced Concepts''. After being appointed as associate professor at KAIST, he moved to TU Dresden as full professor and head of the chair of space systems in 2012, where he later became the director of the Institute of Aerospace Engineering.}
+            Dr.~S.~``Pete''' Worden, (Brig Gen, USAF, Ret, PhD) is Chairman of the Breakthrough Prize Foundation and Executive Director of the foundation's ``Breakthrough Initiatives''. He holds a Bachelor of Science degree in Physics and Astronomy from the University of Michigan and a PhD in Astronomy from the University of Arizona. After several US Air Force positions and a research professorship in astronomy at the University of Arizona, Dr.~Worden was Director of NASA's Ames Research Center until retiring on March 31, 2015. From 2017 to the present, Brigadier General Worden is an Advisor to the Luxembourg Space Agency and was appointed as a Knight-Commander of the Order of Merit of the Grand Duchy of Luxembourg in 2018 for his space services.}
 
         
 
