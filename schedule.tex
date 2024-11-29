@@ -58,7 +58,10 @@ footskip=0.7cm,
 \hypersetup{%
     colorlinks=false,% hyperlinks will be black
     urlbordercolor=conference,% hyperlink borders will be red
-    pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+    pdfborderstyle={/S/U/W 1},% border style will be underline of width 1pt
+    %
+    pdftitle={First European Interstellar Workshop 2024 Schedule},%
+    pdfauthor={Konstantinos Kanavouras},%
 }
 %}
 
@@ -88,13 +91,13 @@ footskip=0.7cm,
             \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
             \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
 
-            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.20}};
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.24}};
         \end{tikzpicture}%
     }
 
     \noindent%
     \shadowcolor{black}
-    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.20}%
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.24}%
     \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
     \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
 
@@ -922,18 +925,8 @@ He lives with his wife and son between Portugal and Greece.
                 \node[anchor=north west,text width=14.1cm,align=left,minimum height=1.1cm]
                 (A1) at (A0.south west)
                 {\mediumfont%
-                Advancing Interstellar Exploration: Integrating Technological, Ethical, and Socio-political Dimensions%
-                %
-    \\[0ex]%
-    {\color{gray}\footnotesize%
-        %
-            Florian Neukart%%
-                \ (University of Leiden; Tera Quantum AG)%
-            %
-            %
-        %
-    }%
-    %%
+                TBD%
+                %%
                 };
 
 
@@ -2577,7 +2570,7 @@ He lives with his wife and son between Portugal and Greece.
         \node at (-1,0) {}; % Alignment node for bounding box
 
         
-            \definecolor{thistrack}{HTML}{7f2ca0}
+            \definecolor{thistrack}{HTML}{7F2CA0}
 
             \def\x{1.3}
             \def\width{14cm}
@@ -2585,7 +2578,7 @@ He lives with his wife and son between Portugal and Greece.
             
 
             \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
-            Visit to Luxembourg space companies%
+            Visit to Luxembourg space companies and University%
             %
             %
             %
@@ -2602,6 +2595,82 @@ He lives with his wife and son between Portugal and Greece.
 
             \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 15:00 };
             \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 18:00 };    
+            
+            
+
+            %
+
+        
+
+   
+
+        % bottom padding
+        \path (current bounding box.south) ++(0,-1mm) node[anchor=north] {};
+    \end{tikzpicture}
+    %\vspace{0mm plus 3cm}
+    \vspace{0cm plus 1cm minus 2mm}
+    %\vfill
+    
+    \begin{tikzpicture}
+
+        \node at (-1,0) {}; % Alignment node for bounding box
+
+        
+            \definecolor{thistrack}{HTML}{7F2CA0}
+
+            \def\x{1.3}
+            \def\width{14cm}
+
+            
+
+            \node[anchor=west,text width=\width,align=left,minimum height=1.3cm] (T) at (\x,0) {\mediumfont%
+            Coffee at the Interstell'Art exhibition%
+            %
+            %
+            %
+                %%
+            %
+            %
+                \\[0ex]%
+                \color{gray}\footnotesize%
+                Artskoco Gallery
+
+\begin{tcolorbox}[
+      frame hidden,
+      sidebyside,
+      bicolor,
+      colback=thistrack!70!black,
+      colbacklower=thistrack!90!black,
+      size=title,
+      top=1mm,
+      bottom=1mm,
+      boxrule=0pt,
+      lefthand ratio=0.3,
+      sidebyside align=center,
+      halign=center,
+      halign lower=flush center,
+      width=0.6\linewidth,
+      % title={  },
+  ]%
+      \color{white}%
+      \textbf{%
+          RSVP AT%%
+      }%
+      \tcblower%
+      \color{white}%
+      \url{https://en.artskoco.com/visites}%
+  \end{tcolorbox}
+%%
+            };
+
+            
+            % Draw rounded rectangle next to that
+            
+            \fill[rounded corners=1mm,thistrack] (T.north west -| 1,-1) rectangle (T.south west -| 1.2,1) {};
+            
+
+            \node[anchor=south] (S) at (current bounding box.west -| 0,0) {\timeregularfont\Large 14:00 };
+            \node[anchor=north] (E) at (current bounding box.west -| 0,0) {\timelightfont\textendash~ 19:00 };    
             
             
 
@@ -2900,7 +2969,7 @@ He lives with his wife and son between Portugal and Greece.
 
     \begin{tcolorbox}[
         enhanced,
-        title={Public Outreach Event: Next destinations for Interstellar Travel},
+        title={Public Outreach Event: Sara Seager (MIT) \\ An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth?},
         sharp corners,
         colbacktitle=thistrack,
         fonttitle=\large\mediumfont,
@@ -2941,12 +3010,12 @@ He lives with his wife and son between Portugal and Greece.
         \setlength{\parskip}{1ex}
         
         \vspace{1ex}
-        \textbf{Highlight Talk:} Sara Seager, MIT, An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth?
+        For thousands of years, people have wondered what lies beyond Earth. Today, astronomers have discovered thousands of exoplanets, and JWST is studying gases in exoplanet atmospheres, including those that might indicate life. Renewed interest in Venus has sparked investigations into the potential for life there, fueled by controversial phosphine detections and laboratory studies of organic molecules' stability in Venus's sulfuric acid clouds. Prof.~Seager will share the latest advances in this exciting field.
 
         {
             \small
             \color{white!20!black}
-            Professor Sara Seager, a Canadian-American astrophysicist and planetary scientist, finds inspiration in the vastness of space. Currently the Class of 1941 Professor of Planetary Science,  Professor of Physics, and Professor of Aeronautical and Astronautical Engineering at the Massachusetts Institute of Technology, Seager pioneered numerous techniques for characterizing exoplanets, revolutionizing our ability to understand these distant worlds. From her pivotal roles in space missions such as the MIT-led NASA Explorer-class TESS and her CubeSat ASTERIA, to her leadership in conceptualizing astrobiology-focused missions to Venus, Seager’s innovative approaches have garnered global recognition, including a MacArthur Fellowship, the 2024 Kavli Prize in Astrophysics, appointment as an Officer of the Order of Canada, and has asteroid 9729 named in her honor. Beyond her scientific endeavors, she shares her journey in ‘The Smallest Lights in the Universe: A Memoir,’ offering a glimpse into the human side of scientific exploration.}
+            Prof.~Sara Seager, a Canadian-American astrophysicist and planetary scientist, finds inspiration in the vastness of space. Currently the Class of 1941 Professor of Planetary Science, Professor of Physics, and Professor of Aeronautical and Astronautical Engineering at the Massachusetts Institute of Technology, she pioneered numerous techniques for characterizing exoplanets, revolutionizing our ability to understand these distant worlds. Seager has garnered global recognition, including a MacArthur Fellowship, the 2024 Kavli Prize in Astrophysics, appointment as an Officer of the Order of Canada, and has asteroid 9729 named in her honor.}
 
         
         \begin{tcolorbox}[

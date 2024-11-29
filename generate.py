@@ -79,9 +79,6 @@ if os.getenv('PRETALX_API_KEY') and args.refresh:
     with open('feis2024-submission-info.yml', 'w') as f:
         yaml.dump(submission_info, f)
 
-# Speaker answers
-
-
 # Answers from authors from CSV file
 speaker_answers = {}
 with open('feis2024-speaker-questions.csv', newline='') as csvfile:
@@ -104,6 +101,13 @@ submission_details = {}
 with open('feis2024-submission-info.yml') as f:
     submission_details = yaml.safe_load(f)
 
+# Parse overrides
+try:
+    with open('overrides.yml') as f:
+        overrides = yaml.safe_load(f)
+except Exception as e:
+    log.warning(f"Failed to read overrides: {e}")
+
 # Parse JSON
 days = json['schedule']['conference']['days']
 timezone = pytz.timezone(json['schedule']['conference']['time_zone_name'])
@@ -124,11 +128,6 @@ for day in days:
             event['end_datetime'] = timezone.localize(datetime.combine(day['date_datetime'], end.time()))
 
             # Get event colour based on its track
-            #for track in json['schedule']['conference']['tracks']:
-            #    if track['track_id'] == event['track_id']:
-            #        event['color'] = track['color']
-            # The above code but more pythonic
-            #event['color'] = next((track['color'] for track in json['schedule']['conference']['tracks'] if track['track_id'] == event['track_id']), None)
             track = next(filter(lambda track: track['name'] == event['track'], json['schedule']['conference']['tracks']), None)
             if track:
                 event['color'] = track['color']
@@ -193,40 +192,6 @@ for talk in json_aux['talks']:
                 if not added:
                     # If we reach this point, it means that the break is the last event of the day
                     room.append(break_event)
-
-# Apply overrides
-try:
-    with open('overrides.yml') as f:
-        overrides = yaml.safe_load(f)
-except Exception as e:
-    log.warning(f"Failed to read overrides: {e}")
-
-
-for day in days:
-    for room in day['rooms'].values():
-        for event in room:
-            if event['code'] in overrides['talks']:
-                override = overrides['talks'][event['code']]
-                for key in override:
-                    event[key] = override[key]
-                
-                if 'persons_reorder' in override:
-                    def get_person_by_code(persons, code):
-                        result = next(filter(lambda person: person['code'] == code, persons), None)
-                        if not result:
-                            log.fatal(f"For the talk \"{event['title']}\" ({ event['code'] }), the person with code \"{code}\" was not found in the list of persons.")
-                        return result
-
-                    original_order = [ person['code'] for person in event['persons'] ]
-                    event['persons'] = [ get_person_by_code(event['persons'], code) for code in override['persons_reorder'] ]
-                    new_order = [ person['code'] for person in event['persons'] ]
-
-                    logging.debug(f"Reordered persons for {event['title']} from {original_order} to {new_order}")
-                    
-            if 'persons' in event:
-                for person in event['persons']:
-                    if 'affiliation' in person and person['affiliation'] in overrides['affiliations']:
-                        person['affiliation'] = overrides['affiliations'][person['affiliation']]
 
 # Create xlsx files for OnTime
 workbook = xlsxwriter.Workbook(f"output/ontime_{datetime.now()}.xlsx".replace(":", "-"))
@@ -327,6 +292,57 @@ workbook.close()
 
 with open('output/ontime.yml', 'w') as f:
     yaml.dump(debug_json, f)
+
+# Insert new sessions
+for day in days:
+    for room in day['rooms'].values():
+        for after_event in room:
+            for event in overrides['insert']:
+                if after_event['code'] == event['after']:
+                    track = next(filter(lambda track: track['name'] == event['track'], json['schedule']['conference']['tracks']), None)
+                    if track:
+                        event['color'] = track['color']
+                    else:
+                        log.warning(f"Track {event['track']} not found for talk {event['title']}.")
+                        event['color'] = '#7f2ca0'
+
+                    start = datetime.strptime(event['start'],"%H:%M")
+                    duration = datetime.strptime(event['duration'],"%H:%M")
+                    delta = timedelta(hours=duration.hour, minutes=duration.minute)
+                    end = start + delta
+                    event['end'] = end.strftime("%H:%M")
+
+                    event['start_datetime'] = timezone.localize(datetime.combine(day['date_datetime'], start.time()))
+                    event['end_datetime'] = timezone.localize(datetime.combine(day['date_datetime'], end.time()))
+
+                    room.insert(room.index(after_event) + 1, event)
+
+# Apply overrides
+for day in days:
+    for room in day['rooms'].values():
+        for event in room:
+            if event['code'] in overrides['talks']:
+                override = overrides['talks'][event['code']]
+                for key in override:
+                    event[key] = override[key]
+                
+                if 'persons_reorder' in override:
+                    def get_person_by_code(persons, code):
+                        result = next(filter(lambda person: person['code'] == code, persons), None)
+                        if not result:
+                            log.fatal(f"For the talk \"{event['title']}\" ({ event['code'] }), the person with code \"{code}\" was not found in the list of persons.")
+                        return result
+
+                    original_order = [ person['code'] for person in event['persons'] ]
+                    event['persons'] = [ get_person_by_code(event['persons'], code) for code in override['persons_reorder'] ]
+                    new_order = [ person['code'] for person in event['persons'] ]
+
+                    logging.debug(f"Reordered persons for {event['title']} from {original_order} to {new_order}")
+                    
+            if 'persons' in event:
+                for person in event['persons']:
+                    if 'affiliation' in person and person['affiliation'] in overrides['affiliations']:
+                        person['affiliation'] = overrides['affiliations'][person['affiliation']]
 
 # Create featured events
 featured = []

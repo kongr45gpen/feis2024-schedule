@@ -114,8 +114,43 @@ talks:
     postfix: Junco Restaurant \& Bar
   YRCWKL:
     title: Working Track Outbrief
-  BRK-0-1945:
-    title: Space Cafe
+  NM9WJG:
+    title: Visit to Luxembourg space companies and University
+insert:
+  - after: NM9WJG
+    title: Coffee at the Interstell'Art exhibition
+    postfix: |
+      Artskoco Gallery
+
+      \begin{tcolorbox}[
+            frame hidden,
+            sidebyside,
+            bicolor,
+            colback=thistrack!70!black,
+            colbacklower=thistrack!90!black,
+            size=title,
+            top=1mm,
+            bottom=1mm,
+            boxrule=0pt,
+            lefthand ratio=0.3,
+            sidebyside align=center,
+            halign=center,
+            halign lower=flush center,
+            width=0.6\linewidth,
+            % title={  },
+        ]%
+            \color{white}%
+            \textbf{%
+                RSVP AT%%
+            }%
+            \tcblower%
+            \color{white}%
+            \url{https://en.artskoco.com/visites}%
+        \end{tcolorbox}
+    track: Parallel Events
+    start: "14:00"
+    duration: "05:00"
+    code: EXTRA-ART
 affiliations:
   Initiative for Interstellar Studies: I4IS
   Initiative for Interstellar Studies I4IS: I4IS
@@ -151,13 +186,16 @@ featured:
     persons:
       - biography: Richard A.\ Norte is a faculty member at TU Delft in the Netherlands. His research group develops cutting-edge nanotechnologies for quantum hardware. His work has been featured in Nature, Nature Photonics, Science, Physical Review Letters, and on the cover of Scientific American. His team has achieved significant breakthroughs in laser sail nano-manufacturing, reducing fabrication times from 15 years to a single day by integrating nanophotonics, fabrication techniques, and economic considerations of the Starshot mission.
   89JDYA: # Sara Seager
-    description: "\\textbf{Highlight Talk:} Sara Seager, MIT, An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth?"
+    title: "Public Outreach Event: Sara Seager (MIT) \\\\ An Enduring Mystery of Astronomy: Can We Find Signs of Life Beyond Earth?"
+    description: "For thousands of years, people have wondered what lies beyond Earth. Today, astronomers have discovered thousands of exoplanets, and JWST is studying gases in exoplanet atmospheres, including those that might indicate life. Renewed interest in Venus has sparked investigations into the potential for life there, fueled by controversial phosphine detections and laboratory studies of organic molecules' stability in Venus's sulfuric acid clouds. Prof.\ Seager will share the latest advances in this exciting field."
     image: public2.jpg
     lefttrim: 3.4cm
     righttrim: 5.6cm
     registration: 
       title: FREE REGISTRATION REQUIRED
       text: "\\footnotesize\\url{https://feis2024.uni.lu/register/seager}"
+    persons:
+      - biography: "Prof.\ Sara Seager, a Canadian-American astrophysicist and planetary scientist, finds inspiration in the vastness of space. Currently the Class of 1941 Professor of Planetary Science, Professor of Physics, and Professor of Aeronautical and Astronautical Engineering at the Massachusetts Institute of Technology, she pioneered numerous techniques for characterizing exoplanets, revolutionizing our ability to understand these distant worlds. Seager has garnered global recognition, including a MacArthur Fellowship, the 2024 Kavli Prize in Astrophysics, appointment as an Officer of the Order of Canada, and has asteroid 9729 named in her honor."
   38CABN: # Paolo Villoresi
     title: "Keynote Lecture 4: Paolo Villoresi (University of Padova) \\\\  Harnessing the light emission for extreme space optical communication"
     image: keynote3.png
