@@ -91,13 +91,13 @@ footskip=0.7cm,
             \filldraw[line width=0.7mm,conference] (6,0) rectangle ++(-1.5,1) node[pos=.5,white] {\faExternalLink};
             \draw[line width=0.7mm,draw=conference,fill=black,fill opacity=0.5] (6,0) rectangle ++(6.5,1) node (END) {} node[pos=.5,white,opacity=1] {\large \url{https://feis2024.uni.lu/}};
 
-            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=0.25}};
+            \node[fill=white] at (current bounding box.east -| 0,0) {\qrcode[height=2cm]{https://feis2024.uni.lu/schedule?s=qr&qrv=1.1}};
         \end{tikzpicture}%
     }
 
     \noindent%
     \shadowcolor{black}
-    \parbox{.333\textwidth}{\color{white}\footnotesize Version 0.25}%
+    \parbox{.333\textwidth}{\color{white}\footnotesize Version 1.1}%
     \parbox{.333\textwidth}{\color{white}\LARGE \centering \shadowtext{Event Schedule}}%
     \parbox{.333\textwidth}{\hfill\color{white}\footnotesize Updated \today}%
 
@@ -926,7 +926,17 @@ He lives with his wife and son between Portugal and Greece.
                 (A1) at (A0.south west)
                 {\mediumfont%
                 TBD%
-                %%
+                %
+    \\[0ex]%
+    {\color{gray}\footnotesize%
+        %
+            Les Johnson%%
+                \ (NASA)%
+            %
+            %
+        %
+    }%
+    %%
                 };
 
 
@@ -1509,7 +1519,7 @@ He lives with his wife and son between Portugal and Greece.
             ,\@ %
         %
             C.~Maccone%%
-                \ (IAA)%
+                \ (International Academy of Astronautics (IAA), Istituto Nazionale di Astrofisica (INAF))%
             %
             ,\@ %
         %
@@ -1540,7 +1550,7 @@ He lives with his wife and son between Portugal and Greece.
     {\color{gray}\footnotesize%
         %
             Claudio Maccone%%
-                \ (IAA)%
+                \ (International Academy of Astronautics (IAA), Istituto Nazionale di Astrofisica (INAF))%
             %
             %
         %
@@ -1961,6 +1971,8 @@ He lives with his wife and son between Portugal and Greece.
     {\color{gray}\footnotesize%
         %
             Aapo Puhakka%%
+                \ (Finnish Astronautical Society)%
+            %
             %
         %
     }%

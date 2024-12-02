@@ -263,6 +263,7 @@ for day in days:
             row.append(technical)
 
             # Speaker way of addressing
+            address = ""
             if 'persons' in event and len(event['persons']) > 0:
                 code = event['persons'][0]['code']
                 address = event['persons'][0]['public_name']
@@ -276,12 +277,14 @@ for day in days:
                         address = f"{their_answers['Title']} {address}"
                     else:
                         address = f". {address}"
-                row.append(address)
                 log.debug(f" ↳ Address: {address}")
-            else:
-                row.append("")
+            
+            if 'answers' in event and 'Speakers' in event['answers']:
+                address += f" (🗣 {event['answers']['Speakers']})"
 
-            row.append("1")
+            row.append(address)
+
+            row.append("1") # public
 
 
             for j, cell in enumerate(row):
@@ -405,9 +408,15 @@ if args.presentation:
                         extension = filename.split('.')[1].upper()
                     except Exception as e:
                         extension = ""
+
+                    # Create a directory based on the presentation day, time and title
+                    directory_name = f"presentations/{day['date']}_{event['start'].replace(':','')}_{event['title'][0:20]}"
+                    if not os.path.exists(directory_name):
+                        os.makedirs(directory_name)
+                        log.debug(f"Created directory {directory_name}")
                     
                     # If the filename exists, keep the presentation. If it doesn't, download it
-                    if not os.path.exists(f"presentations/{filename}"):
+                    if not os.path.exists(f"{directory_name}/{filename}"):
                         log.debug(f"Downloading {url} ...")
                         try:
                             r = requests.get(url, headers = {
@@ -417,7 +426,7 @@ if args.presentation:
                         except Exception as e:
                             log.error(f"Failed to download {url}: {e}")
                             continue
-                        with open(f"presentations/{filename}", 'wb') as f:
+                        with open(f"{directory_name}/{filename}", 'wb') as f:
                             f.write(r.content)
                         log.debug("Download complete")
                         console.print(f" [blue]downloaded [bold]new {extension}[/bold] presentation named {filename}[/blue]")
@@ -430,7 +439,7 @@ if args.presentation:
                     console.print(f" has [cyan]URL presentation at:[/cyan] {url}")
 
                     # Create a shortcut file that contains the URL...
-                    with open(f"presentations/{event['title']}.url", 'w') as f:
+                    with open(f"{directory_name}/{event['title']}.url", 'w') as f:
                         f.write("[InternetShortcut]\nURL=" + url)
                 else:
                     console.print(" has [bold red]no presentation[/bold red]")
